@@ -9,6 +9,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" type="x-icon" href="{{asset('assets/img/logo.png')}}">
 
         <!-- Styles -->
         <style>
@@ -62,6 +63,12 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            .welcome-logo{
+                max-width : 150px ;
+                margin : 0 ;
+                padding : 0 ;
+            }
         </style>
     </head>
     <body>
@@ -74,6 +81,7 @@
             @endif
 
             <div class="content">
+                <p><img src="{{asset('assets/img/logo.png')}}" class="welcome-logo"></p>
                 <div class="title m-b-md">
                     Dodolan Desain
                 </div>
