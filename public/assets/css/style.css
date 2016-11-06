@@ -1,12 +1,344 @@
 /*
 	Main CSS file for Dodolan Desain
 	It is used for modify app.css master file
+	Mix every reset css into one file style.css
 */
+/* Font.css */
+/*
+    Font assets library for Dodolan Desain
+*/
+@font-face {
+  font-family: "Aller-Light";
+  src: url("../fonts/Aller-Light.eot?#iefix") format("embedded-opentype"), url("../fonts/Aller-Light.woff") format("woff"), url("../fonts/Aller-Light.ttf") format("truetype"), url("../fonts/Aller-Light.svg#Aller-Light") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'KottaOne';
+  src: url("../fonts/KottaOne-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/KottaOne-Regular.woff") format("woff"), url("../fonts/KottaOne-Regular.ttf") format("truetype"), url("../fonts/KottaOne-Regular.svg#KottaOne-Regular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'Lato-Light';
+  src: url("../fonts/Lato-Light.eot?#iefix") format("embedded-opentype"), url("../fonts/Lato-Light.woff") format("woff"), url("../fonts/Lato-Light.ttf") format("truetype"), url("../fonts/Lato-Light.svg#Lato-Light") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'Montserrat';
+  src: url("../fonts/Montserrat-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/Montserrat-Regular.woff") format("woff"), url("../fonts/Montserrat-Regular.ttf") format("truetype"), url("../fonts/Montserrat-Regular.svg#Montserrat-Regular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'Montserrat-Bold';
+  src: url("../fonts/Montserrat-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/Montserrat-Bold.woff") format("woff"), url("../fonts/Montserrat-Bold.ttf") format("truetype"), url("../fonts/Montserrat-Bold.svg#Montserrat-Bold") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'Raleway';
+  src: url("../fonts/Raleway-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/Raleway-Regular.otf") format("opentype"), url("../fonts/Raleway-Regular.woff") format("woff"), url("../fonts/Raleway-Regular.ttf") format("truetype"), url("../fonts/Raleway-Regular.svg#Raleway-Regular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'Raleway-Light';
+  src: url("../fonts/Raleway-Light.eot?#iefix") format("embedded-opentype"), url("../fonts/Raleway-Light.otf") format("opentype"), url("../fonts/Raleway-Light.woff") format("woff"), url("../fonts/Raleway-Light.ttf") format("truetype"), url("../fonts/Raleway-Light.svg#Raleway-Light") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'Raleway-Thin';
+  src: url("../fonts/Raleway-Thin.eot?#iefix") format("embedded-opentype"), url("../fonts/Raleway-Thin.otf") format("opentype"), url("../fonts/Raleway-Thin.woff") format("woff"), url("../fonts/Raleway-Thin.ttf") format("truetype"), url("../fonts/Raleway-Thin.svg#Raleway-Thin") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+.aller {
+  font-family: 'Aller-Light' !important; }
+
+.lato {
+  font-family: 'Lato-Light' !important; }
+
+.kottaone {
+  font-family: 'KottaOne' !important; }
+
+.mont {
+  font-family: 'Montserrat' !important; }
+
+.mont-bold {
+  font-family: 'Montserrat-Bold' !important; }
+
+.raleway {
+  font-family: 'Raleway' !important; }
+
+.raleway-light {
+  font-family: 'Raleway-Light' !important; }
+
+.raleway-thin {
+  font-family: 'Raleway-Thin' !important; }
+
+/* Main reset */
 body, html {
+  font-family: "Aller-Light";
   margin: 0;
   padding: 0;
   top: 0;
-  left: 0; }
+  left: 0;
+  background: #fff !important; }
+
+/*Bootstrap reset*/
+.transparent {
+  background: none !important; }
+
+.navbar {
+  padding: 10px 0px;
+  margin-bottom: 0; }
+
+.navbar-default {
+  background: #fff;
+  border: none;
+  border-radius: 0; }
+
+.navbar-brand {
+  margin: 0;
+  padding: 0; }
+  .navbar-brand > img {
+    height: 100%;
+    padding: 5px 15px; }
+
+.nav {
+  font-family: "Montserrat";
+  color: #000 !important;
+  font-size: 0.9em; }
+  .nav > li > a {
+    transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out; }
+    .nav > li > a:hover {
+      transition: all 0.2s ease-in-out;
+      -webkit-transition: all 0.2s ease-in-out;
+      -moz-transition: all 0.2s ease-in-out;
+      -o-transition: all 0.2s ease-in-out; }
+  .nav > li.active > a {
+    color: #000 !important;
+    background: none !important; }
+
+/* margin style */
+.mg-5 {
+  margin: 5px; }
+
+.mg-bt-5 {
+  margin-top: 5px;
+  margin-bottom: 5px; }
+
+.mg-lr-5 {
+  margin-left: 5px;
+  margin-right: 5px; }
+
+.mg-10 {
+  margin: 10px; }
+
+.mg-bt-10 {
+  margin-top: 10px;
+  margin-bottom: 10px; }
+
+.mg-lr-10 {
+  margin-left: 10px;
+  margin-right: 10px; }
+
+.mg-15 {
+  margin: 15px; }
+
+.mg-bt-15 {
+  margin-top: 15px;
+  margin-bottom: 15px; }
+
+.mg-lr-15 {
+  margin-left: 15px;
+  margin-right: 15px; }
+
+.mg-20 {
+  margin: 20px; }
+
+.mg-bt-20 {
+  margin-top: 20px;
+  margin-bottom: 20px; }
+
+.mg-lr-20 {
+  margin-left: 20px;
+  margin-right: 20px; }
+
+.mg-25 {
+  margin: 25px; }
+
+.mg-bt-25 {
+  margin-top: 25px;
+  margin-bottom: 25px; }
+
+.mg-lr-25 {
+  margin-left: 25px;
+  margin-right: 25px; }
+
+.mg-30 {
+  margin: 30px; }
+
+.mg-bt-30 {
+  margin-top: 30px;
+  margin-bottom: 30px; }
+
+.mg-lr-30 {
+  margin-left: 30px;
+  margin-right: 30px; }
+
+.mg-35 {
+  margin: 35px; }
+
+.mg-bt-35 {
+  margin-top: 35px;
+  margin-bottom: 35px; }
+
+.mg-lr-35 {
+  margin-left: 35px;
+  margin-right: 35px; }
+
+.mg-40 {
+  margin: 40px; }
+
+.mg-bt-40 {
+  margin-top: 40px;
+  margin-bottom: 40px; }
+
+.mg-lr-40 {
+  margin-left: 40px;
+  margin-right: 40px; }
+
+.mg-45 {
+  margin: 45px; }
+
+.mg-bt-45 {
+  margin-top: 45px;
+  margin-bottom: 45px; }
+
+.mg-lr-45 {
+  margin-left: 45px;
+  margin-right: 45px; }
+
+.mg-50 {
+  margin: 50px; }
+
+.mg-bt-50 {
+  margin-top: 50px;
+  margin-bottom: 50px; }
+
+.mg-lr-50 {
+  margin-left: 50px;
+  margin-right: 50px; }
+
+/* Padding style */
+.pd-5 {
+  padding: 5px; }
+
+.pd-bt-5 {
+  padding-top: 5px;
+  padding-bottom: 5px; }
+
+.pd-lr-5 {
+  padding-left: 5px;
+  padding-right: 5px; }
+
+.pd-10 {
+  padding: 10px; }
+
+.pd-bt-10 {
+  padding-top: 10px;
+  padding-bottom: 10px; }
+
+.pd-lr-10 {
+  padding-left: 10px;
+  padding-right: 10px; }
+
+.pd-15 {
+  padding: 15px; }
+
+.pd-bt-15 {
+  padding-top: 15px;
+  padding-bottom: 15px; }
+
+.pd-lr-15 {
+  padding-left: 15px;
+  padding-right: 15px; }
+
+.pd-20 {
+  padding: 20px; }
+
+.pd-bt-20 {
+  padding-top: 20px;
+  padding-bottom: 20px; }
+
+.pd-lr-20 {
+  padding-left: 20px;
+  padding-right: 20px; }
+
+.pd-25 {
+  padding: 25px; }
+
+.pd-bt-25 {
+  padding-top: 25px;
+  padding-bottom: 25px; }
+
+.pd-lr-25 {
+  padding-left: 25px;
+  padding-right: 25px; }
+
+.pd-30 {
+  padding: 30px; }
+
+.pd-bt-30 {
+  padding-top: 30px;
+  padding-bottom: 30px; }
+
+.pd-lr-30 {
+  padding-left: 30px;
+  padding-right: 30px; }
+
+.pd-35 {
+  padding: 35px; }
+
+.pd-bt-35 {
+  padding-top: 35px;
+  padding-bottom: 35px; }
+
+.pd-lr-35 {
+  padding-left: 35px;
+  padding-right: 35px; }
+
+.pd-40 {
+  padding: 40px; }
+
+.pd-bt-40 {
+  padding-top: 40px;
+  padding-bottom: 40px; }
+
+.pd-lr-40 {
+  padding-left: 40px;
+  padding-right: 40px; }
+
+.pd-45 {
+  padding: 45px; }
+
+.pd-bt-45 {
+  padding-top: 45px;
+  padding-bottom: 45px; }
+
+.pd-lr-45 {
+  padding-left: 45px;
+  padding-right: 45px; }
+
+.pd-50 {
+  padding: 50px; }
+
+.pd-bt-50 {
+  padding-top: 50px;
+  padding-bottom: 50px; }
+
+.pd-lr-50 {
+  padding-left: 50px;
+  padding-right: 50px; }
 
 .dd-navbar {
   margin: 0 !important;
@@ -16,5 +348,307 @@ body, html {
   max-width: 35px;
   margin: 0;
   padding: 0; }
+
+.rel-pos {
+  position: relative; }
+
+#up {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 20px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.9);
+  color: #fff; }
+
+#up a {
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  margin: 0;
+  padding: 0; }
+
+/* Header style */
+.nowrap {
+  padding: 0;
+  margin: 0; }
+
+.header-hero {
+  width: 100%;
+  overflow: hidden;
+  font-family: "Montserrat-Bold";
+  color: #000 !important; }
+
+.header-hero > p, .outside-content {
+  overflow: hidden;
+  float: left;
+  text-align: right !important;
+  margin: 0;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%); }
+
+.sub-content {
+  font-family: "Aller-Light"; }
+
+.head-hero-content {
+  position: relative;
+  float: left;
+  width: 600px;
+  height: 600px;
+  background: #0ab;
+  background-size: 100% !important;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  -webkit-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  -moz-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  -o-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  shape-outside: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  -webkit-shape-outside: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); }
+
+.head-hero-inside {
+  opacity: 0;
+  width: 90%;
+  height: 90%;
+  position: absolute;
+  margin: 5%;
+  top: 0;
+  left: 0;
+  padding: 5%;
+  border: solid 2px #fff;
+  z-index: 7;
+  color: #fff;
+  font-family: "Montserrat";
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transform: rotate(45deg); }
+  .head-hero-inside:hover {
+    opacity: 1;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out; }
+
+.head-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  z-index: 6;
+  cursor: pointer;
+  color: #fff;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  -webkit-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  -moz-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  -o-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out; }
+  .head-overlay:hover {
+    opacity: 1;
+    transition: all 0.25s ease-in-out;
+    -webkit-transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.25s ease-in-out;
+    -o-transition: all 0.25s ease-in-out; }
+
+.head-hero-content-2 {
+  position: relative;
+  float: left;
+  width: 300px;
+  height: 300px;
+  left: -12.7%;
+  background: #0ab;
+  background-size: 100% !important;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  -webkit-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  -moz-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  -o-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  shape-outside: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  -webkit-shape-outside: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); }
+
+.hero-over {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out; }
+  .hero-over:hover {
+    opacity: 1;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out; }
+
+.hero-inside {
+  width: 90%;
+  height: 90%;
+  position: absolute;
+  border: solid 3px #fff;
+  color: #fff;
+  margin: 5%;
+  padding: 5%;
+  font-family: "Montserrat";
+  transform: rotate(45deg); }
+  .hero-inside .hero-inside-content {
+    position: relative;
+    transform: rotate(-45deg);
+    vertical-align: center;
+    text-align: center;
+    font-size: 1.5em;
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    -webkit-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    -moz-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    -o-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); }
+    .hero-inside .hero-inside-content p {
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-right: -50%;
+      transform: translate(-50%, -50%); }
+  .hero-inside .hero-inside-content-2 {
+    position: relative;
+    transform: rotate(-45deg);
+    vertical-align: center;
+    text-align: center;
+    font-size: 1em;
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    -webkit-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    -moz-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    -o-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); }
+    .hero-inside .hero-inside-content-2 p {
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-right: -50%;
+      transform: translate(-50%, -50%); }
+
+.head-img {
+  width: 100%; }
+
+/* Content goes here */
+.content-title, .content-subtitle {
+  font-family: "Montserrat-Bold";
+  font-weight: 400 !important;
+  font-size: 2.4em !important; }
+
+.content-subtitle {
+  font-size: 2.2em !important; }
+
+.title-turqoise {
+  color: #1abb9c !important; }
+
+.title-orange {
+  color: #ffa500 !important; }
+
+.title-purple {
+  color: #9b58b6 !important; }
+
+.title-red {
+  color: #e74b3b !important; }
+
+hr.content-border {
+  margin: 0px;
+  min-width: 100px;
+  max-width: 105px;
+  float: left; }
+
+.greeny {
+  background: #217346;
+  border: solid 3px #217346;
+  color: #217346;
+  fill: #217346; }
+
+.turqoise {
+  background: #1abb9c;
+  border: solid 3px #1abb9c;
+  color: #1abb9c;
+  fill: #1abb9c; }
+
+.orange {
+  background: #ffa500;
+  border: solid 3px #ffa500;
+  color: #ffa500;
+  fill: #ffa500; }
+
+.purple {
+  background: #9b58b6;
+  border: solid 3px #9b58b6;
+  color: #9b58b6;
+  fill: #9b58b6; }
+
+.red {
+  background: #e74b3b;
+  border: solid 3px #e74b3b;
+  color: #e74b3b;
+  fill: #e74b3b; }
+
+/* Gallery content */
+#dodolan-gallery .gallery-content {
+  margin: 2px !important; }
+
+#dodolan-gallery .gallery-content {
+  position: relative;
+  float: left;
+  width: 275px;
+  height: 275px;
+  background: #0ab;
+  margin: 0px;
+  background-size: 100% !important; }
+
+#dodolan-gallery .gallery-content .gallery-img {
+  width: 100%; }
+
+.gallery-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(22, 160, 133, 0.9);
+  color: #fff;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out; }
+  .gallery-overlay:hover {
+    opacity: 1;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out; }
+
+.gallery-caption {
+  width: 80%;
+  height: 80%;
+  margin: 10%; }
+
+.gallery-caption-title {
+  font-family: "Montserrat-Bold";
+  margin: 0 0 10% 0px; }
+
+/* Testimonial */
+.rating-star {
+  max-height: 50px; }
+
+.testimoni-text {
+  font-size: 1.1em; }
+
+.testimoni-author {
+  font-family: "KottaOne"; }
 
 /*# sourceMappingURL=style.css.map */

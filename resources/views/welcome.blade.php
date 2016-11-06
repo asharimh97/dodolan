@@ -9,6 +9,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <link href="{{asset('assets/css/fonts.css')}}" rel="stylesheet" type="text/css">
         <link rel="shortcut icon" type="x-icon" href="{{asset('assets/img/logo.png')}}">
 
         <!-- Styles -->
@@ -16,7 +17,7 @@
             html, body {
                 background-color: #fff;
                 color: #636b6f;
-                font-family: 'Raleway', sans-serif;
+                font-family: 'Raleway-Thin', sans-serif;
                 font-weight: 100;
                 height: 100vh;
                 margin: 0;
@@ -51,6 +52,7 @@
             }
 
             .links > a {
+                font-family: Montserrat ;
                 color: #636b6f;
                 padding: 0 25px;
                 font-size: 12px;
@@ -87,11 +89,11 @@
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="#">Home</a>
+                    <a href="#">Gallery</a>
+                    <a href="#">How it works</a>
+                    <a href="#">Order</a>
+                    <a href="https://github.com/asharimh97/dodolan">Documentation</a>
                 </div>
             </div>
         </div>

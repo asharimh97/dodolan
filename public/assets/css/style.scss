@@ -1,13 +1,65 @@
 /*
 	Main CSS file for Dodolan Desain
 	It is used for modify app.css master file
+	Mix every reset css into one file style.css
 */
+$turqoise : #1abb9c ;
+$green : rgb(33,115,70) ;
+$orange : #ffa500 ;
+$purple : #9b58b6 ;
+$red : #e74b3b ;
+$white : #fff ;
+/* Font.css */
+@import '_font' ;
 
+/* Main reset */
 body,html{
+	font-family : 'Aller-Light' ;
 	margin : 0 ;
 	padding : 0 ;
 	top : 0 ;
 	left : 0 ;
+	background: #fff !important ;
+}
+
+@import 'reset' ;
+
+/* margin style */
+@for $i from 1 through 10{
+	.mg-#{$i*5}{
+		margin : $i*5*1px ;
+	}
+	.mg-bt-#{$i*5}{
+		margin-top : $i*5*1px ;
+		margin-bottom : $i*5*1px ;
+	}
+	.mg-lr-#{$i*5}{
+		margin-left : $i*5*1px ;
+		margin-right : $i*5*1px ;
+	}
+}
+
+/* Padding style */
+
+@for $i from 1 through 10{
+	.pd-#{$i*5}{
+		padding : $i*5*1px ;
+	}
+	.pd-bt-#{$i*5}{
+		padding-top : $i*5*1px ;
+		padding-bottom : $i*5*1px ;
+	}
+	.pd-lr-#{$i*5}{
+		padding-left : $i*5*1px ;
+		padding-right : $i*5*1px ;
+	}
+}
+
+@mixin transition($transition){
+	transition : all $transition*1s ease-in-out ;
+	-webkit-transition : all $transition*1s ease-in-out ;
+	-moz-transition : all $transition*1s ease-in-out ;
+	-o-transition : all $transition*1s ease-in-out ;
 }
 
 .dd-navbar{
@@ -18,4 +70,291 @@ body,html{
 	max-width: 35px ;
 	margin : 0 ;
 	padding: 0 ;
+}
+.rel-pos{
+	position: relative;
+}
+#up{
+	position: fixed ;
+	bottom : 0 ;
+	right: 0 ;
+	margin : 20px ;
+	padding: 10px ;
+	background: rgba(0,0,0,0.9);
+	color : $white ;
+}
+#up a{
+	color : $white ;
+	text-decoration: none ;
+	border : none ;
+	margin : 0 ;
+	padding : 0 ;
+}
+
+/* Header style */
+.nowrap {
+	padding: 0 ;
+	margin : 0 ;
+}
+.header-hero{
+	width: 100% ;
+	overflow: hidden ;
+	font-family: 'Montserrat-Bold' ;
+	color: #000 !important ;
+}
+.header-hero > p ,.outside-content{
+	overflow: hidden;
+	float : left ;
+	text-align: right !important ;
+	margin : 0 ;
+	top : 50% ;
+	left : 50% ;
+	margin-right: -50% ;
+	transform: translate(-50%, -50%);
+}
+.sub-content{
+	font-family: 'Aller-Light' ;
+}
+.head-hero-content{
+	position: relative;
+	float: left ;
+	width : 600px ;
+	height : 600px ;
+	background: #0ab ;
+	background-size: 100% !important;
+	clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+	-webkit-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+	-moz-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+	-o-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+
+	shape-outside: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+	-webkit-shape-outside: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+.head-hero-inside{
+	opacity: 0 ;
+	width: 90% ;
+	height: 90% ;
+	position: absolute ;
+	margin : 5% ;
+	top : 0 ;
+	left : 0 ;
+	padding: 5% ;
+	border : solid 2px #fff ;
+	z-index: 7 ;
+	color : #fff ;
+	font-family: 'Montserrat' ;
+	@include transition(0.3) ;
+	transform: rotate(45deg);
+
+	&:hover{
+		opacity : 1 ;
+		@include transition(0.3) ;
+	}
+}
+.head-overlay{
+	position: absolute;
+	top : 0 ;
+	left : 0 ;
+	width : 100% ;
+	height: 100% ;
+	background: rgba(0,0,0,0.45) ; 
+	opacity: 0 ;
+	z-index: 6 ;
+	cursor: pointer;
+	color : #fff ;
+	clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+	-webkit-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+	-moz-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+	-o-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+	@include transition(0.25) ;
+
+	&:hover{
+		opacity : 1 ;
+		@include transition(0.25) ;
+	}
+}
+.head-hero-content-2{
+	position: relative ;
+	float: left ;
+	width : 300px ;
+	height : 300px ;
+	left: -12.7% ;
+	background: #0ab ;
+	background-size: 100% !important;
+	clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+	-webkit-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+	-moz-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+	-o-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+
+	shape-outside: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+	-webkit-shape-outside: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+.hero-over{
+	position : absolute ;
+	width : 100% ;
+	height : 100% ;
+	background: rgba(0,0,0,0.45);
+	opacity: 0 ;
+	@include transition(0.3) ;
+
+	&:hover{
+		opacity : 1 ;
+		@include transition(0.3) ;
+	}
+}
+.hero-inside{
+	width: 90% ;
+	height : 90% ;
+	position: absolute ;
+	border : solid 3px #fff ;
+	color : #fff ;
+	margin : 5% ;
+	padding : 5% ;
+	font-family: 'Montserrat' ;
+	transform: rotate(45deg);
+
+	.hero-inside-content{
+		position: relative;
+		transform: rotate(-45deg);
+		vertical-align: center ;
+		text-align: center ;
+		font-size: 1.5em ;
+		width: 100% ;
+		height: 100% ;
+		clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+		-webkit-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+		-moz-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+		-o-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+
+		& p{
+			margin : 0 ;
+			position: absolute ;
+			top : 50% ;
+			left : 50% ;
+			margin-right: -50% ;
+			transform: translate(-50%, -50%);
+		}
+	}
+
+	.hero-inside-content-2{
+		position: relative;
+		transform: rotate(-45deg);
+		vertical-align: center ;
+		text-align: center ;
+		font-size: 1em ;
+		width: 100% ;
+		height: 100% ;
+		clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+		-webkit-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+		-moz-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+		-o-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+
+		& p{
+			margin : 0 ;
+			position: absolute ;
+			top : 50% ;
+			left : 50% ;
+			margin-right: -50% ;
+			transform: translate(-50%, -50%);
+		}
+	}
+}
+
+.head-img{
+	width : 100% ;
+}
+
+/* Content goes here */
+.content-title, .content-subtitle{
+	font-family: 'Montserrat-Bold' ;
+	font-weight: 400 !important;
+	font-size: 2.4em !important ;
+}
+
+.content-subtitle{
+	font-size: 2.2em !important ;
+}
+
+.title-turqoise{ color : $turqoise !important; }
+.title-orange{ color : $orange !important; }
+.title-purple{ color : $purple !important; }
+.title-red{ color : $red !important; }
+
+hr.content-border{
+	margin: 0px ;
+	min-width: 100px ;
+	max-width: 105px ;
+	float: left ;
+}
+@mixin bound($color){
+	background: $color ;
+	border : solid 3px $color ;
+	color: $color ;
+	fill : $color ;
+}
+.greeny{
+	@include bound($green) ;
+}
+.turqoise{
+	@include bound($turqoise) ;
+}
+.orange{
+	@include bound($orange) ;
+}
+.purple{
+	@include bound($purple) ;
+}
+.red{
+	@include bound($red) ;
+}
+
+/* Gallery content */
+#dodolan-gallery .gallery-content{
+	margin : 2px !important ;
+}
+#dodolan-gallery .gallery-content{
+	position: relative;
+	float: left ;
+	width : 275px ;
+	height: 275px ;
+	background: #0ab ;
+	margin: 0px ;
+	background-size: 100% !important;
+}
+#dodolan-gallery .gallery-content .gallery-img{
+	width : 100% ;
+}
+.gallery-overlay{
+	position: absolute;
+	width: 100% ;
+	height: 100% ;
+	background: rgba(22, 160, 133, 0.9);
+	color : $white ;
+	opacity: 0 ;
+	@include transition(0.3) ;
+
+	&:hover{
+		opacity : 1 ;
+		@include transition(0.3) ;
+	}
+}
+.gallery-caption{
+	width : 80% ;
+	height: 80% ;
+	margin : 10% ;
+}
+.gallery-caption-title{
+	font-family: 'Montserrat-Bold' ;
+	margin : 0 0 10% 0px ;
+}
+
+/* Testimonial */
+.rating-star{
+	max-height: 50px ;
+}
+.testimoni-text{
+	font-size: 1.1em ;
+}
+.testimoni-author{
+	font-family: 'KottaOne' ;
 }

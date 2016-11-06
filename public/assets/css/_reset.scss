@@ -1,0 +1,49 @@
+@mixin transition($transition){
+	transition : all $transition*1s ease-in-out ;
+	-webkit-transition : all $transition*1s ease-in-out ;
+	-moz-transition : all $transition*1s ease-in-out ;
+	-o-transition : all $transition*1s ease-in-out ;
+}
+/*Bootstrap reset*/
+.transparent{
+	background: none !important ;
+}
+.navbar{
+	padding : 10px 0px ;
+	margin-bottom : 0 ;
+}
+.navbar-default{
+	background: #fff ;
+	border : none ;
+	border-radius: 0 ;
+}
+
+.navbar-brand{
+	margin : 0 ;
+	padding: 0 ;
+
+	&>img{
+		height: 100% ;
+		padding : 5px 15px;
+	}
+}
+
+.nav{
+	font-family: 'Montserrat' ;
+	color : #000 !important ;
+	font-size: 0.9em ;
+
+	&>li>a{
+		@include transition(0.2) ;
+
+		&:hover{
+			@include transition(0.2) ;			
+		}
+	}
+
+	&>li.active>a{
+		color : #000 !important ;
+		background: none !important ;
+	}
+}
+

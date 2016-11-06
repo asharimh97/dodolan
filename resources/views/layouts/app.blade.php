@@ -14,9 +14,9 @@
     <title>{{ config('app.name', 'Dodolan Desain') }}</title>
 
     <!-- Styles -->
-    <link href="./assets/css/style.css" rel="stylesheet" type="text/css">
     <link href="./assets/css/app.css" rel="stylesheet" type="text/css">
     <link href="./assets/css/fonts.css" rel="stylesheet" type="text/css">
+    <link href="./assets/css/style.css" rel="stylesheet" type="text/css">
 
     <!-- Scripts -->
     <script>
