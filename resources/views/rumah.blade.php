@@ -82,7 +82,7 @@
 	<div class="container rel-pos">
 		<section class="header-hero">
 			<div class="col-md-12 nowrap">
-				<div class="head-hero-content nowrap" style="background: url({{asset('assets/img/header-img-1.jpg')}}) ;">
+				<div class="head-hero-content nowrap" style="background: url({{asset('assets/img/portfolios-3.jpg')}}) ;">
 					<div class="head-overlay">
 						<div class="hero-inside">
 							<div class="hero-inside-content">
@@ -91,7 +91,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="head-hero-content-2 nowrap" style="background: url({{asset('assets/img/header-img-1.jpg')}}) ;">
+				<div class="head-hero-content-2 nowrap" style="background: url({{asset('assets/img/portfolios-17.jpg')}}) ;">
 					<div class="head-overlay">
 						<div class="hero-inside">
 							<div class="hero-inside-content-2">
@@ -100,11 +100,11 @@
 						</div>
 					</div>
 				</div>
-				<div class="head-hero-content-2 nowrap" style="background: url({{asset('assets/img/header-img-1.jpg')}}) ;">
+				<div class="head-hero-content-2 nowrap" style="background: url({{asset('assets/img/portfolios-14.jpg')}}) ;">
 					<div class="head-overlay">
 						<div class="hero-inside">
 							<div class="hero-inside-content-2">
-								<p>CV DESIGN</p>
+								<p>CARD DESIGN</p>
 							</div>
 						</div>
 					</div>
@@ -243,7 +243,7 @@
 								</p>
 							</div>
 						</div>
-						<img src="{{asset('assets/img/header-img-1.jpg')}}" class="gallery-img" alt="AMH Logo" title="AMH Logo">
+						<img src="{{asset('assets/img/portfolios-1.jpg')}}" class="gallery-img" alt="AMH Logo" title="AMH Logo">
 					</div>
 				</a>
 				<a href="#">
@@ -261,7 +261,7 @@
 								</p>
 							</div>
 						</div>
-						<img src="{{asset('assets/img/header-img-1.jpg')}}" class="gallery-img" alt="AMH Logo" title="AMH Logo">
+						<img src="{{asset('assets/img/portfolios-4.jpg')}}" class="gallery-img" alt="AMH Logo" title="AMH Logo">
 					</div>
 				</a>
 				<a href="#">
@@ -278,7 +278,7 @@
 								</p>
 							</div>
 						</div>
-						<img src="{{asset('assets/img/header-img-1.jpg')}}" class="gallery-img" alt="AMH Logo" title="AMH Logo">
+						<img src="{{asset('assets/img/portfolios-10.jpg')}}" class="gallery-img" alt="AMH Logo" title="AMH Logo">
 					</div>
 				</a>
 				<a href="#">
@@ -296,7 +296,7 @@
 								</p>
 							</div>
 						</div>
-						<img src="{{asset('assets/img/header-img-1.jpg')}}" class="gallery-img" alt="AMH Logo" title="AMH Logo">
+						<img src="{{asset('assets/img/portfolios-5.jpg')}}" class="gallery-img" alt="AMH Logo" title="AMH Logo">
 					</div>
 				</a>
 
@@ -316,7 +316,7 @@
 								</p>
 							</div>
 						</div>
-						<img src="{{asset('assets/img/header-img-1.jpg')}}" class="gallery-img" alt="AMH Logo" title="AMH Logo">
+						<img src="{{asset('assets/img/portfolios-8.jpg')}}" class="gallery-img" alt="AMH Logo" title="AMH Logo">
 					</div>
 				</a>
 				<a href="#">
@@ -335,7 +335,7 @@
 								</p>
 							</div>
 						</div>
-						<img src="{{asset('assets/img/header-img-1.jpg')}}" class="gallery-img" alt="AMH Logo" title="AMH Logo">
+						<img src="{{asset('assets/img/portfolios-20.jpg')}}" class="gallery-img" alt="AMH Logo" title="AMH Logo">
 					</div>
 				</a>
 				<a href="#">
@@ -354,7 +354,7 @@
 								</p>
 							</div>
 						</div>
-						<img src="{{asset('assets/img/header-img-1.jpg')}}" class="gallery-img" alt="AMH Logo" title="AMH Logo">
+						<img src="{{asset('assets/img/portfolios-15.jpg')}}" class="gallery-img" alt="AMH Logo" title="AMH Logo">
 					</div>
 				</a>
 			</div>
@@ -411,28 +411,263 @@
 <!-- Teams -->
 <section id="teams" class="dd-frame pd-bt-30">
 	<div class="container">
-		<h2 class="content-title title-purple">The designers</h2>
-		<hr class="content-border purple" />
+		<div class="row pd-bt-20">
+			<div class="col-md-12">
+				<h2 class="content-title title-purple">The designers</h2>
+				<hr class="content-border purple" />
+			</div>
+		</div>
+		<div class="row pd-bt-20">
+			<div class="col-md-12">
+				<div id="team-member" class="owl-carousel">
+					<div class="team-item pd-bt-10">
+						<div class="row pd-bt-20">
+							<div class="col-md-8 col-md-offset-2">
+								<img src="{{asset('assets/img/teams-1.jpg')}}" alt="Avidia Sarasvati" title="Avidia Sarasvati" class="team-img">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 text-center">
+								<p class="big mont-bold nowrap">Avidia Sarasvati</p>
+								<p class="aller">Wireframe Specialist</p>
+								<p class="pd-bt-10">
+									<ul class="team-links">
+										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Youtube"><i class="fa fa-youtube-play"></i></a></li>
+										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
+									</ul>
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="team-item pd-bt-10">
+						<div class="row pd-bt-20">
+							<div class="col-md-8 col-md-offset-2">
+								<img src="{{asset('assets/img/teams-2.jpg')}}" alt="Avidia Sarasvati" title="Avidia Sarasvati" class="team-img">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 text-center">
+								<p class="big mont-bold nowrap">Kukuh Apriyantoro</p>
+								<p class="aller">Senior Logo Designer</p>
+								<p class="pd-bt-10">
+									<ul class="team-links">
+										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Youtube"><i class="fa fa-youtube-play"></i></a></li>
+										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
+									</ul>
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="team-item pd-bt-10">
+						<div class="row pd-bt-20">
+							<div class="col-md-8 col-md-offset-2">
+								<img src="{{asset('assets/img/teams-3.jpg')}}" alt="Aulia Oktaviana" title="Aulia Oktaviana" class="team-img">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 text-center">
+								<p class="big mont-bold nowrap">Aulia Oktaviana</p>
+								<p class="aller">Senior Web Designer</p>
+								<p class="pd-bt-10">
+									<ul class="team-links">
+										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Youtube"><i class="fa fa-youtube-play"></i></a></li>
+										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
+									</ul>
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="team-item pd-bt-10">
+						<div class="row pd-bt-20">
+							<div class="col-md-8 col-md-offset-2">
+								<img src="{{asset('assets/img/teams-4.jpg')}}" alt="Luluk Nurjannah" title="Luluk Nurjannah" class="team-img">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 text-center">
+								<p class="big mont-bold nowrap">Luluk Nurjannah</p>
+								<p class="aller">Logo Designer</p>
+								<p class="pd-bt-10">
+									<ul class="team-links">
+										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Youtube"><i class="fa fa-youtube-play"></i></a></li>
+										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
+									</ul>
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="team-item pd-bt-10">
+						<div class="row pd-bt-20">
+							<div class="col-md-8 col-md-offset-2">
+								<img src="{{asset('assets/img/teams-5.jpg')}}" alt="Clara Roft" title="Clara Roft" class="team-img">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 text-center">
+								<p class="big mont-bold nowrap">Clara Roft</p>
+								<p class="aller">Branding Specialist</p>
+								<p class="pd-bt-10">
+									<ul class="team-links">
+										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Youtube"><i class="fa fa-youtube-play"></i></a></li>
+										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
+									</ul>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </section>
 <!-- Teams /end -->
 <!-- Contact us -->
 <section id="ask" class="dd-frame pd-bt-30">
 	<div class="container">
-		<div class="col-md-6">
-			&nbsp;
-		</div>
-		<div class="col-md-6">
-			
-			<h2 class="content-title title-red">Confused?<br>Ask us everything</h2>
-			<hr class="content-border red" />
+		<div class="row">
+			<div class="col-md-6">
+				&nbsp;
+			</div>
+			<div class="col-md-6">
+				
+				<h2 class="content-title title-red">Confused?<br>Ask us everything</h2>
+				<hr class="content-border red" />
 
+				<div class="row pd-bt-20">
+					<div class="col-md-10">
+						<p class="litbig">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+						<p class="pd-bt-10">
+							<a href="" class="btn btn-danger pd-bt-10 pd-lr-30">Contact us &nbsp;&nbsp;&nbsp;<i class="fa fa-chevron-right text-right"></i></a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section id="ordernow">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1 text-center">
+				<h1 class="mont he-1 nowrap">Then what are you waiting for?</h1>
+				<p class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. </p>
+				<p>
+					<a href="" class="btn btn-order pd-lr-30">Order now</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+<section id="partners"  class="pd-bt-30">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div id="partner" class="owl-carousel">
+					<div class="partner-item"><img src="{{asset('assets/img/partners-1.png')}}" title="Adidas" alt="Adidas"></div>
+					<div class="partner-item"><img src="{{asset('assets/img/partners-2.png')}}" title="BNI" alt="BNI"></div>
+					<div class="partner-item"><img src="{{asset('assets/img/partners-3.png')}}" title="BRI" alt="BRI"></div>
+					<div class="partner-item"><img src="{{asset('assets/img/partners-4.png')}}" title="JNE" alt="JNE"></div>
+					<div class="partner-item"><img src="{{asset('assets/img/partners-5.png')}}" title="Tiki" alt="Tiki"></div>
+				</div>
+			</div>
 		</div>
 	</div>
 </section>
 <!-- Contact us /end -->
-<footer>
+<footer id="footer" class="pd-bt-20">
 	<!-- Footer goes here -->
+	<section id="links" class="pd-bt-20">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 text-center">
+					<p><img src="{{asset('assets/img/logo.png')}}" class="logo-dd" alt="Dodolan Design" title="Dodolan Design"></p>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. 
+					</p>
+					<p>
+						<ul class="social-links">
+							<li><a href="#" data-toggle="tooltip" data-placement="top" title="Youtube"><i class="fa fa-youtube-play"></i></a></li>
+							<li><a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+							<li><a href="#" data-toggle="tooltip" data-placement="top" title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
+						</ul>
+					</p>
+				</div>
+				<div class="col-md-3">
+					<h4 class="mont-bold">COMPANY</h4>
+					<p>
+						<ul class="dodolan-links">
+							<li><a href="#">About Us</a></li>
+							<li><a href="#">Careers</a></li>
+							<li><a href="#">Contact Us</a></li>
+							<li><a href="#">Jobs</a></li>
+							<li><a href="#">Teams</a></li>
+							<li><a href="#">Testimonials</a></li>
+						</ul>
+					</p>
+				</div>
+				<div class="col-md-3">
+					<h4 class="mont-bold">LINKS</h4>
+					<p>
+						<ul class="dodolan-links">
+							<li><a href="#">Frequently Asked Questions</a></li>
+							<li><a href="#">Pricing and Order</a></li>
+							<li><a href="#">Gallery</a></li>
+							<li><a href="#">Term of Service</a></li>
+							<li><a href="#">Featured Design</a></li>
+							<li><a href="#">Digital Resources</a></li>
+						</ul>
+					</p>
+				</div>
+				<div class="col-md-3">
+					<h4 class="mont-bold">RECENTS</h4>
+					<p>
+						<ul class="dodolan-links">
+							<li><a href="#">AMH Logo</a></li>
+							<li><a href="#">Fireball Vectors</a></li>
+							<li><a href="#">Blue Hijab</a></li>
+							<li><a href="#">Business Card</a></li>
+							<li><a href="#">Greeting Card</a></li>
+						</ul>
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="copyright pd-bt-10">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 text-right">
+					<img src="{{asset('assets/img/surabi.png')}}" alt="Surabi" title="Surabi" class="team-logo">
+					<p class="small nowrap">Designed and-developed with love in Jogja</p>
+					<p class="small nowrap">Dodolan Design &copy; Surabi 2016</p>
+				</div>
+			</div>
+		</div>
+	</section>
 </footer>
 <script type="text/javascript" src="{{asset('assets/js/jquery-1.11.3.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/js/bootstrap.min.js')}}"></script>
@@ -459,6 +694,8 @@
 		//owl carousel
 		var owl = $("#dodolan-gallery") ;
 		var tes = $("#testimonies") ;
+		var partner = $("#partner") ;
+		var team = $("#team-member") ;
 		owl.owlCarousel({
 			items : 4,
 			loop : true,
@@ -472,6 +709,16 @@
 			autoplay : true,
 			autoplayTimeout : 12000,
 			slideSpeed : 200
+		}) ;
+
+		partner.owlCarousel({
+			items : 5,
+			pagination : false
+		}) ;
+
+		team.owlCarousel({
+			items : 5,
+			pagination : false 
 		}) ;
 
 		// nicescroll
@@ -499,6 +746,9 @@
                 }
             });
         });
+
+        // tooltip
+        $('[data-toggle="tooltip"]').tooltip() ;
 
 	}) ;
 </script>
