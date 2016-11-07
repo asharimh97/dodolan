@@ -49,7 +49,7 @@
 					<li><a href="#works">HOW IT WORKS</a></li>
 					<li><a href="#gallery">GALLERY</a></li>
 					<li><a href="#order">ORDER</a></li>
-					<li><a href="#testimoni">LOGIN</a></li>
+					<li><a href="{{url('/login')}}">LOGIN</a></li>
 				</ul>
 			</div>
 		</div>
@@ -74,7 +74,7 @@
 					<li><a href="#works">HOW IT WORKS</a></li>
 					<li><a href="#gallery">GALLERY</a></li>
 					<li><a href="#order">ORDER</a></li>
-					<li><a href="#testimoni">LOGIN</a></li>
+					<li><a href="{{url('/login')}}">LOGIN</a></li>
 				</ul>
 			</div>
 		</div>
@@ -681,6 +681,7 @@
 		new WOW().init() ;
 		var floatNav = $("#float-nav") ;
 		floatNav.hide() ;
+		$("#up").hide() ;
 		$(window).scroll(function(){
 			if($(document).scrollTop() > 300){
 				$("#up").fadeIn() ;
