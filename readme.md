@@ -5,3 +5,12 @@ Dodolan Desain dibuat dengan :
 - Laravel 5
 - Bootstrap
 - jQuery
+- Font Awesome
+- Owl Carousel
+- Animate.css dan Wow.js
+
+## Dokumentasi
+Dokumentasi selengkapnya dapat di cek di [website dokumentasi Laravel 5](http://laravel.com/docs)
+
+## Lisensi
+Dodolan desain merupakan aplikasi berbasis Laravel 5 sehingga lisensi Dodolan Desain juga sama dengan lisensi Laravel 5 yaitu dibawah Lisensi MIT [MIT license](http://opensource.org/licenses/MIT).
