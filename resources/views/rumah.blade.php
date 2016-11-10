@@ -1,84 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE-edge">
-	<meta name="viewport" content="width = device-width, initial-scale = 1.0">
-	<meta name="description" content="Bingung membuat dan mencetak design dengan mudah? Dodolan Design ada untuk membantuk Anda membuat design yang menarik dan mencetaknya">
-	<meta name="author" content="Surabi">
-	<meta name="keywords" content="Design, Design grafis, cetak design, dodolan design">
-	<meta name="robots" content="index, follow">
-	<meta name="copyright" content="Surabi Team, 2016">
+@extends('layouts.dodolan')
 
-	<title>Dodolan Design</title>
-
-	<link rel="stylesheet" type="text/css" href="{{asset('assets/css/app.css')}}">
-	<link rel="stylesheet" type="text/css" href="{{asset('assets/css/normalize.css')}}">
-	<link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}">
-	<link rel="stylesheet" type="text/css" href="{{asset('assets/css/animate.css')}}">
-	<link rel="stylesheet" type="text/css" href="{{asset('assets/css/font-awesome.min.css')}}">
-	<link rel="stylesheet" type="text/css" href="{{asset('assets/css/owl.carousel.css')}}">
-	<link rel="stylesheet" type="text/css" href="{{asset('assets/css/owl.theme.css')}}">
-
-	<!-- Shortcut icon -->
-	<link rel="shortcut icon" type="x-icon" href="{{asset('assets/img/logo.png')}}">
-</head>
-<body>
-<div id="up">
-	<a href="#home"><i class="fa fa-chevron-up"></i></a>
-</div>
-<header class="header" id="home">
-	<!-- Header goes here -->
-	<nav id="main-nav" class="navbar navbar-default transparent">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
-		          <span class="sr-only">Toggle navigation</span>
-		          <span class="icon-bar"></span>
-		          <span class="icon-bar"></span>
-		          <span class="icon-bar"></span>
-		        </button>
-		        <a href="#" class="navbar-brand">
-		        	<img src="{{asset('assets/img/logo.png')}}" alt="Dodolan Design" title="Dodolan Design">
-		        </a>
-			</div>
-
-			<div class="collapse navbar-collapse" id="menu">
-				<ul class="nav navbar-nav navbar-right">
-					<li class="active"><a href="#home">HOME</a></li>
-					<li><a href="#works">HOW IT WORKS</a></li>
-					<li><a href="#gallery">GALLERY</a></li>
-					<li><a href="#order">ORDER</a></li>
-					<li><a href="{{url('/login')}}">LOGIN</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-	<nav id="float-nav" class="navbar navbar-default navbar-fixed-top wow">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
-		          <span class="sr-only">Toggle navigation</span>
-		          <span class="icon-bar"></span>
-		          <span class="icon-bar"></span>
-		          <span class="icon-bar"></span>
-		        </button>
-		        <a href="#" class="navbar-brand">
-		        	<img src="{{asset('assets/img/logo.png')}}" alt="Dodolan Design" title="Dodolan Design">
-		        </a>
-			</div>
-
-			<div class="collapse navbar-collapse" id="menu">
-				<ul class="nav navbar-nav navbar-right">
-					<li class="active"><a href="#home">HOME</a></li>
-					<li><a href="#works">HOW IT WORKS</a></li>
-					<li><a href="#gallery">GALLERY</a></li>
-					<li><a href="#order">ORDER</a></li>
-					<li><a href="{{url('/login')}}">LOGIN</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+@section('content')
+<section id="hero-header">
 	<div class="container rel-pos">
 		<section class="header-hero">
 			<div class="col-md-12 nowrap">
@@ -118,7 +41,7 @@
 			</div>
 		</section>
 	</div>
-</header>
+</section>
 <!-- How it works -->
 <section id="works" class="dd-frame pd-bt-30">
 	<div class="container">
@@ -227,136 +150,24 @@
 		<div class="row pd-bt-20">
 			<div class="col-md-12 owl-carousel" id="dodolan-gallery">
 			<!-- First Row -->
+			@foreach ($galleries as $gallery)
 				<a href="#">
 					<div class="gallery-content">
 						<div class="gallery-overlay">
 							<div class="gallery-caption pd-10">
-								<h3 class="gallery-caption-title nowrap">AMH LOGO</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua.</p>
+								<h3 class="gallery-caption-title nowrap">{{$gallery->title}}</h3>
+								<p>{{ substr($gallery->description, 0, 150).'...' }}</p>
 								<p>
+									@for($i=0; $i<$gallery->rating; $i++)
 									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
+									@endfor
 								</p>
 							</div>
 						</div>
-						<img src="{{asset('assets/img/portfolios-1.jpg')}}" class="gallery-img" alt="AMH Logo" title="AMH Logo">
+						<img src="{{asset('/uploads/'.$gallery->picture)}}" class="gallery-img" alt="{{ $gallery->title }}" title="{{ $gallery->title }}">
 					</div>
 				</a>
-				<a href="#">
-					<div class="gallery-content">
-						<div class="gallery-overlay">
-							<div class="gallery-caption pd-10">
-								<h3 class="gallery-caption-title nowrap">AMH LOGO</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua.</p>
-								<p>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-								</p>
-							</div>
-						</div>
-						<img src="{{asset('assets/img/portfolios-4.jpg')}}" class="gallery-img" alt="AMH Logo" title="AMH Logo">
-					</div>
-				</a>
-				<a href="#">
-					<div class="gallery-content">
-						<div class="gallery-overlay">
-							<div class="gallery-caption pd-10">
-								<h3 class="gallery-caption-title nowrap">AMH LOGO</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua.</p>
-								<p>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-								</p>
-							</div>
-						</div>
-						<img src="{{asset('assets/img/portfolios-10.jpg')}}" class="gallery-img" alt="AMH Logo" title="AMH Logo">
-					</div>
-				</a>
-				<a href="#">
-					<div class="gallery-content">
-						<div class="gallery-overlay">
-							<div class="gallery-caption pd-10">
-								<h3 class="gallery-caption-title nowrap">AMH LOGO</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua.</p>
-								<p>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-								</p>
-							</div>
-						</div>
-						<img src="{{asset('assets/img/portfolios-5.jpg')}}" class="gallery-img" alt="AMH Logo" title="AMH Logo">
-					</div>
-				</a>
-
-				<!-- Second Row -->
-				<a href="#">
-					<div class="gallery-content">
-						<div class="gallery-overlay">
-							<div class="gallery-caption pd-10">
-								<h3 class="gallery-caption-title nowrap">AMH LOGO</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua.</p>
-								<p>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-								</p>
-							</div>
-						</div>
-						<img src="{{asset('assets/img/portfolios-8.jpg')}}" class="gallery-img" alt="AMH Logo" title="AMH Logo">
-					</div>
-				</a>
-				<a href="#">
-					<div class="gallery-content">
-						<div class="gallery-overlay">
-							<div class="gallery-caption pd-10">
-								<h3 class="gallery-caption-title nowrap">AMH LOGO</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua.</p>
-								<p>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-								</p>
-							</div>
-						</div>
-						<img src="{{asset('assets/img/portfolios-20.jpg')}}" class="gallery-img" alt="AMH Logo" title="AMH Logo">
-					</div>
-				</a>
-				<a href="#">
-					<div class="gallery-content">
-						<div class="gallery-overlay">
-							<div class="gallery-caption pd-10">
-								<h3 class="gallery-caption-title nowrap">AMH LOGO</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua.</p>
-								<p>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-								</p>
-							</div>
-						</div>
-						<img src="{{asset('assets/img/portfolios-15.jpg')}}" class="gallery-img" alt="AMH Logo" title="AMH Logo">
-					</div>
-				</a>
+			@endforeach	
 			</div>
 		</div>
 	</div>
@@ -589,169 +400,13 @@
 					<div class="partner-item"><img src="{{asset('assets/img/partners-3.png')}}" title="BRI" alt="BRI"></div>
 					<div class="partner-item"><img src="{{asset('assets/img/partners-4.png')}}" title="JNE" alt="JNE"></div>
 					<div class="partner-item"><img src="{{asset('assets/img/partners-5.png')}}" title="Tiki" alt="Tiki"></div>
+					<div class="partner-item"><img src="{{asset('assets/img/partners-6.png')}}" title="Bank Mandiri" alt="Bank Mandiri"></div>
+					<div class="partner-item"><img src="{{asset('assets/img/partners-7.png')}}" title="BCA" alt="BCA"></div>
+					<div class="partner-item"><img src="{{asset('assets/img/partners-8.png')}}" title="Pos Indonesia" alt="Pos Indonesia"></div>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
 <!-- Contact us /end -->
-<footer id="footer" class="pd-bt-20">
-	<!-- Footer goes here -->
-	<section id="links" class="pd-bt-20">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-3 text-center">
-					<p><img src="{{asset('assets/img/logo.png')}}" class="logo-dd" alt="Dodolan Design" title="Dodolan Design"></p>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. 
-					</p>
-					<p>
-						<ul class="social-links">
-							<li><a href="#" data-toggle="tooltip" data-placement="top" title="Youtube"><i class="fa fa-youtube-play"></i></a></li>
-							<li><a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-							<li><a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="fa fa-instagram"></i></a></li>
-							<li><a href="#" data-toggle="tooltip" data-placement="top" title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
-						</ul>
-					</p>
-				</div>
-				<div class="col-md-3">
-					<h4 class="mont-bold">COMPANY</h4>
-					<p>
-						<ul class="dodolan-links">
-							<li><a href="#">About Us</a></li>
-							<li><a href="#">Careers</a></li>
-							<li><a href="#">Contact Us</a></li>
-							<li><a href="#">Jobs</a></li>
-							<li><a href="#">Teams</a></li>
-							<li><a href="#">Testimonials</a></li>
-						</ul>
-					</p>
-				</div>
-				<div class="col-md-3">
-					<h4 class="mont-bold">LINKS</h4>
-					<p>
-						<ul class="dodolan-links">
-							<li><a href="#">Frequently Asked Questions</a></li>
-							<li><a href="#">Pricing and Order</a></li>
-							<li><a href="#">Gallery</a></li>
-							<li><a href="#">Term of Service</a></li>
-							<li><a href="#">Featured Design</a></li>
-							<li><a href="#">Digital Resources</a></li>
-						</ul>
-					</p>
-				</div>
-				<div class="col-md-3">
-					<h4 class="mont-bold">RECENTS</h4>
-					<p>
-						<ul class="dodolan-links">
-							<li><a href="#">AMH Logo</a></li>
-							<li><a href="#">Fireball Vectors</a></li>
-							<li><a href="#">Blue Hijab</a></li>
-							<li><a href="#">Business Card</a></li>
-							<li><a href="#">Greeting Card</a></li>
-						</ul>
-					</p>
-				</div>
-			</div>
-		</div>
-	</section>
-	<section id="copyright pd-bt-10">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12 text-right">
-					<img src="{{asset('assets/img/surabi.png')}}" alt="Surabi" title="Surabi" class="team-logo">
-					<p class="small nowrap">Designed and-developed with love in Jogja</p>
-					<p class="small nowrap">Dodolan Design &copy; Surabi 2016</p>
-				</div>
-			</div>
-		</div>
-	</section>
-</footer>
-<script type="text/javascript" src="{{asset('assets/js/jquery-1.11.3.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('assets/js/bootstrap.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('assets/js/modernizr.js')}}"></script>
-<script type="text/javascript" src="{{asset('assets/js/jquery.nicescroll.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('assets/js/wow.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
-<script type="text/javascript">
-	$(document).ready(function(){
-		// wow js
-		new WOW().init() ;
-		var floatNav = $("#float-nav") ;
-		floatNav.hide() ;
-		$("#up").hide() ;
-		$(window).scroll(function(){
-			if($(document).scrollTop() > 300){
-				$("#up").fadeIn() ;
-				floatNav.fadeIn() ;
-			}else{
-				$("#up").fadeOut() ;
-				floatNav.fadeOut() ;
-			}
-		}) ;
-
-		//owl carousel
-		var owl = $("#dodolan-gallery") ;
-		var tes = $("#testimonies") ;
-		var partner = $("#partner") ;
-		var team = $("#team-member") ;
-		owl.owlCarousel({
-			items : 4,
-			loop : true,
-			pagination : false
-		}) ;
-
-		owl.trigger('owl.play', 10000) ;
-
-		tes.owlCarousel({
-			singleItem : true,
-			autoplay : true,
-			autoplayTimeout : 12000,
-			slideSpeed : 200
-		}) ;
-
-		partner.owlCarousel({
-			items : 5,
-			pagination : false
-		}) ;
-
-		team.owlCarousel({
-			items : 5,
-			pagination : false 
-		}) ;
-
-		// nicescroll
-		$("html").niceScroll({
-			cursorcolor : 'rgba(0,0,0,0.5)',
-			cursorwidth : '10px',
-			cursorborder : 'none',
-			cursorborderradius : '0px' ,
-			zindex : '101'
-		}) ;
-
-		// bellow is js function to remove the url when clicked link
-		$(function() {
-            $('a[href*=#]:not([href=#])').click(function() {
-                if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-
-                    var target = $(this.hash);
-                    target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-                    if (target.length) {
-                        $('html,body').animate({
-                            scrollTop: target.offset().top
-                        }, 1000);
-                        return false;
-                    }
-                }
-            });
-        });
-
-        // tooltip
-        $('[data-toggle="tooltip"]').tooltip() ;
-
-	}) ;
-</script>
-</body>
-</html>
+@endsection

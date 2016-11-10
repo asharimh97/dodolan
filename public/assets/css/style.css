@@ -735,6 +735,12 @@ hr.content-border {
 #dodolan-gallery .gallery-content .gallery-img {
   width: 100%; }
 
+.gallery-display {
+  position: relative;
+  width: 100%; }
+  .gallery-display img {
+    width: 100%; }
+
 .gallery-overlay {
   position: absolute;
   width: 100%;

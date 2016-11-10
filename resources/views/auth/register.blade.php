@@ -38,6 +38,20 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+                            <label for="username" class="col-md-4 control-label">Username</label>
+
+                            <div class="col-md-6">
+                                <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" required>
+
+                                @if ($errors->has('username'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('username') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>
 
@@ -64,6 +78,52 @@
                                     </span>
                                 @endif
                             </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
+                            <label for="gender" class="col-md-4 control-label">Gender</label>
+
+                            <div class="col-md-6 pd-bt-5">
+                                <input id="gender" type="radio" name="gender" required value="Laki laki"> Laki Laki
+                                <input id="gender" type="radio" name="gender" required value="Perempuan"> Perempuan
+
+                                @if ($errors->has('gender'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('gender') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('telp') ? ' has-error' : ''}}">
+                            <label for="" class="col-md-4 control-label">Phone Number</label>
+
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon">+62</span>
+                                    <input type="text" name="telp" id="telp" class="form-control" required value="{{ old('telp') }}">
+                                </div>
+                            </div>
+
+                            @if ($errors->has('telp'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('telp') }}</strong>
+                                    </span>
+                                @endif
+                        </div>
+
+                        <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
+                            <label for="address" class="col-md-4 control-label">Address</label>
+
+                            <div class="col-md-6">
+                                <textarea name="address" id="address" class="form-control" required>{{ old('address') }}</textarea>
+                            </div>
+
+                            @if ($errors->has('address'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('address') }}</strong>
+                                    </span>
+                                @endif
                         </div>
 
                         <div class="form-group">

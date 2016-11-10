@@ -21,6 +21,7 @@ class CreatePortfolioTable extends Migration
             $table->integer('id_user')->unsigned() ;
             $table->integer('rating')->length(2) ;
             $table->integer('id_jenis_design')->unsigned() ;
+            $table->string('picture') ;
         }) ;
 
         Schema::table('portfolios', function(Blueprint $table){
