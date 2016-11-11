@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Portfolio as Portfolio ;
+use App\Testimonial ;
 
 use Illuminate\Http\Request;
 
@@ -18,7 +19,12 @@ class BaseController extends Controller
     					->inRandomOrder()
     					->limit(8)
     					->get() ;
-    	return view('rumah', ['galleries' => $gallery]) ;
+    	$testimoni = Testimonial::join('users', 'testimonials.id_user', '=', 'users.id')
+    						->where('id_testi', '>', '0')
+    						->orderBy('rating', 'desc')
+    						->limit(3)
+    						->get() ;
+    	return view('rumah', [ 'galleries' => $gallery, 'testimonies' => $testimoni ]) ;
     }
 
     public function order(){
