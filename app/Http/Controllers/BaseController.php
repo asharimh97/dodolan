@@ -6,6 +6,7 @@ use App\Portfolio as Portfolio ;
 use App\Testimonial ;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB ;
 
 use App\Http\Requests;
 
@@ -28,7 +29,8 @@ class BaseController extends Controller
     }
 
     public function order(){
-    	return view('order') ;
+        $order = DB::table('packages')->get() ;
+    	return view('order', ['packages' => $order]) ;
     }
 
     public function gallery(){

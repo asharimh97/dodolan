@@ -1,14 +1,6 @@
 @extends('layouts.dodolan2')
+@section('title', 'Our Gallery')
 @section('content')
-<section id="page-title" class="pd-bt-20">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<h1 class="mont-bold">Our Gallery</h1>
-			</div>
-		</div>
-	</div>
-</section>
 <section id="page-content">
 	<div class="container">
 		<div class="row pd-bt-30">

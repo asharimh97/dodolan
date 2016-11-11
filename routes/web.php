@@ -40,9 +40,17 @@ Auth::routes();
 
 Route::get('/home', 'UserController@index');
 
+Route::get('/profile/{id}', 'UserController@profile') ;
+
 Route::get('/testi', 'UserController@testi') ;
 
 Route::post('/testimoni', 'UserController@testimoni') ;
+
+Route::get('/order/{id}', 'UserController@order') ;
+
+Route::get('/setting/{id}', 'UserController@setting') ;
+
+Route::get('/recent/{id}', 'UserController@recent') ;
 
 /* Admin Controller */
 Route::get('/admin', function(){

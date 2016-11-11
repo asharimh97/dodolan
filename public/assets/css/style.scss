@@ -368,6 +368,19 @@ hr.content-border{
 	font-family: 'KottaOne' ;
 }
 
+/* Order styling */
+.order-frame{
+	border: solid 2px #eee ;
+}
+ul.packages-feature{
+	padding : 0 ;
+
+	li.list-feature{
+		list-style: none ;
+		display: block ;
+	}
+}
+
 /* Team member item */
 #team-member .team-item{
 	margin: 5px ;

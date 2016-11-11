@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response ;
 use Illuminate\Http\RedirectResponse ;
 use Illuminate\Support\Facades\DB ;
+use Illuminate\Support\Facades\Auth as Auth ;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller ;
@@ -28,6 +29,65 @@ class UserController extends Controller
 
     public function testi(){
     	return view('testimoni') ;
+    }
+
+    // order page after choose a package, if user choose
+    /**
+    *
+    * Order page form to handle user's request about product
+    * @param $id for id package
+    * @return view form
+    *
+    */
+    public function order($id){
+        $pack = DB::table('packages')->where('id_packages', '=', $id)->count() ;
+        if($pack == 1)
+            return 'Nanti keluar form' ;
+        else
+            abort(404) ;
+    }
+
+    /**
+    *
+    * Display setting page, to set new password, new username, profile pic? :/ maybe
+    * @param $id user
+    * @return setting page
+    *
+    */
+    public function setting($id){
+        if(Auth::user()->id == $id)
+            return view('setting') ;
+        else
+            abort(404) ;
+    }
+
+    /**
+    *
+    * Display the recent history of the user
+    * @param $id user
+    * @return Response history page
+    *
+    */
+    public function recent($id){
+        return view('history') ;
+    }
+
+    /**
+    *
+    * Display profile page
+    * @param $id
+    * @return Response
+    *
+    */
+
+    public function profile($id){
+    	$data = User::find($id) ;
+    	if($data){
+    		// do if found data, progress, orders, order status, history
+    		return view('profile', ['user' => $data]) ;
+    	}else{
+    		abort(404) ;
+    	}
     }
 
     /**

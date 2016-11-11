@@ -1,5 +1,5 @@
 @extends('layouts.dodolan2')
-
+@section('title', 'Dashboard')
 @section('content')
 <div class="container">
     <div class="row">

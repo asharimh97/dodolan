@@ -239,6 +239,11 @@ body, html {
   100% {
     -webkit-transform: translateX(0);
     transform: translateX(0); } }
+.no-border {
+  border: none; }
+  .no-border thead > tr > td, .no-border thead > tr > th, .no-border tbody > tr > th, .no-border tbody > tr > td, .no-border tfoot > tr > td, .no-border tfoot > tr > th {
+    border: none !important; }
+
 /* margin style */
 .mg-5 {
   margin: 5px; }
@@ -777,6 +782,16 @@ hr.content-border {
 
 .testimoni-author {
   font-family: "KottaOne"; }
+
+/* Order styling */
+.order-frame {
+  border: solid 2px #eee; }
+
+ul.packages-feature {
+  padding: 0; }
+  ul.packages-feature li.list-feature {
+    list-style: none;
+    display: block; }
 
 /* Team member item */
 #team-member .team-item {

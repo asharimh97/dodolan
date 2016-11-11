@@ -49,7 +49,7 @@
 					<li><a href="{{ url('/') }}#home">HOME</a></li>
 					<li><a href="{{url('/')}}#works">HOW IT WORKS</a></li>
 					<li><a href="{{url('/gallery')}}">GALLERY</a></li>
-					<li><a href="#order">ORDER</a></li>
+					<li><a href="{{url('order')}}">ORDER</a></li>
 					@if(Auth::guest())
 						<li><a href="{{url('/login')}}">LOGIN</a></li>
 					@else
@@ -63,8 +63,8 @@
 							</a>
 
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="#">Profile</a></li>
-								<li><a href="#">Setting</a></li>
+								<li><a href="{{ url('/profile/'.Auth::user()->id) }}">Profile</a></li>
+								<li><a href="{{ url('/setting/'.Auth::user()->id) }}">Setting</a></li>
 								<li>
 									<a href="{{ url('logout') }}"
 										onclick="event.preventDefault(); document.getElementById('logout-form').submit(); ">
@@ -83,6 +83,15 @@
 		</div>
 	</nav>
 </header>
+<section id="page-title" class="pd-bt-20">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h1 class="mont-bold">@yield('title')</h1>
+			</div>
+		</div>
+	</div>
+</section>
 
 @yield('content')
 
@@ -111,12 +120,12 @@
 					<h4 class="mont-bold">COMPANY</h4>
 					<p>
 						<ul class="dodolan-links">
-							<li><a href="#">About Us</a></li>
+							<li><a href="{{ url('/about') }}">About Us</a></li>
 							<li><a href="#">Careers</a></li>
-							<li><a href="#">Contact Us</a></li>
+							<li><a href="{{ url('/contact') }}">Contact Us</a></li>
 							<li><a href="#">Jobs</a></li>
-							<li><a href="#">Teams</a></li>
-							<li><a href="#">Testimonials</a></li>
+							<li><a href="{{ url('/about') }}">Teams</a></li>
+							<li><a href="{{ url('/testi') }}">Testimonials</a></li>
 						</ul>
 					</p>
 				</div>
@@ -125,10 +134,10 @@
 					<p>
 						<ul class="dodolan-links">
 							<li><a href="#">Frequently Asked Questions</a></li>
-							<li><a href="#">Pricing and Order</a></li>
-							<li><a href="#">Gallery</a></li>
+							<li><a href="{{ url('/order') }}">Pricing and Order</a></li>
+							<li><a href="{{ url('/gallery') }}">Gallery</a></li>
 							<li><a href="#">Term of Service</a></li>
-							<li><a href="#">Featured Design</a></li>
+							<li><a href="{{ url('/gallery') }}">Featured Design</a></li>
 							<li><a href="#">Digital Resources</a></li>
 						</ul>
 					</p>
@@ -137,11 +146,11 @@
 					<h4 class="mont-bold">RECENTS</h4>
 					<p>
 						<ul class="dodolan-links">
-							<li><a href="#">AMH Logo</a></li>
-							<li><a href="#">Fireball Vectors</a></li>
-							<li><a href="#">Blue Hijab</a></li>
-							<li><a href="#">Business Card</a></li>
-							<li><a href="#">Greeting Card</a></li>
+							<li><a href="{{ url('/gallery') }}">AMH Logo</a></li>
+							<li><a href="{{ url('/gallery') }}">Fireball Vectors</a></li>
+							<li><a href="{{ url('/gallery') }}">Blue Hijab</a></li>
+							<li><a href="{{ url('/gallery') }}">Business Card</a></li>
+							<li><a href="{{ url('/gallery') }}">Greeting Card</a></li>
 						</ul>
 					</p>
 				</div>
