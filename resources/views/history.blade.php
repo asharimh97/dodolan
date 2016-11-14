@@ -30,7 +30,9 @@
 			<!-- /Profile sidebar -->
 			<!-- Profile content -->
 			<div class="col-md-9">
-				Isi nya history tentang orderan si pengguna, se detail detailnya, termasuk sample yang diambil
+				<div class="row">
+					<h1>Still on development process</h1>
+				</div>
 			</div>
 			<!-- /Profile content -->
 		</div>

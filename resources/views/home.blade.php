@@ -27,7 +27,7 @@
 ?>
 <section id="page-content">
     <div class="container">
-        <div class="row">
+        <div class="row pd-bt-30">
             <div class="col-md-12">
             <!-- Menampilkan seluruh order yang dilakukan -->
                 <table class="table table-striped table-hover">
@@ -73,7 +73,9 @@
                                     <span class="label label-success">{{ $user->status }}</span>
                                 @endif
                             </td>
-                            <td>Action here</td>
+                            <td>
+                                <a href="#" class="btn btn-default"><i class="fa fa-eye"></i></a>
+                            </td>
                         </tr>
                         <?php 
                             $i++ ;

@@ -253,7 +253,13 @@
             'csrfToken' => csrf_token(),
         ]); ?>
 
+        // another way
+        $(".sample-label").click(function(){
+			$(this).toggleClass("check") ;
+		}) ;
+
 	}) ;
+
 </script>
 </body>
 </html>

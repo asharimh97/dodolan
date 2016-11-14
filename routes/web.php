@@ -48,6 +48,8 @@ Route::post('/testimoni', 'UserController@testimoni') ;
 
 Route::get('/order/{id}', 'UserController@order') ;
 
+Route::get('/order/detail/{id}', 'UserController@detail') ;
+
 Route::post('/orderpost', 'UserController@orderpost') ;
 
 Route::get('/setting/{id}', 'UserController@setting') ;

@@ -555,9 +555,6 @@ body, html {
 .form-signin select {
   margin-bottom: 10px; }
 
-.btn {
-  font-family: "Lato"; }
-
 .btn-login {
   background-color: #22c48a;
   border: none;
@@ -937,6 +934,11 @@ ul.packages-feature {
   ul.packages-feature li.list-feature {
     list-style: none;
     display: block; }
+
+.check {
+  width: 90%;
+  margin: 5%;
+  opacity: 0.5; }
 
 /* Team member item */
 #team-member .team-item {

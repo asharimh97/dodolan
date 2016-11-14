@@ -38,7 +38,10 @@
 						<label for="sample" class="control-label col-md-2">Choose sample</label>
 						<div class="col-md-8">
 							@foreach ($samples as $sample)
-								<input type="checkbox" id="sample" name="sample[]" value="{{ $sample->id_portfolios }}" class="sample"> {{  $sample->title.' ' }} 
+								<label class="col-md-3">
+									<img src="{{ asset('uploads/'.$sample->picture) }}" class="head-img sample-label">
+									<input type="checkbox" id="sample" name="sample[]" value="{{ $sample->id_portfolios }}" class="sample hidden">
+								</label>
 							@endforeach
 						</div>
 					</div>

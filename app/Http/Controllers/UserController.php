@@ -11,6 +11,7 @@ use Illuminate\Http\Response ;
 use Illuminate\Http\RedirectResponse ;
 use Illuminate\Support\Facades\DB ;
 use Illuminate\Support\Facades\Auth as Auth ;
+use Illuminate\Support\Collection ;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller ;
@@ -73,7 +74,7 @@ class UserController extends Controller
         $pack = DB::table('packages')->where('id_packages', '=', $id)->count() ;
         $sample = Portfolio::where('id_portfolios', '>', '0')
                             ->inRandomOrder()
-                            ->limit(10)
+                            ->limit(12)
                             ->get() ;
         if($pack == 1)
             return view('order2', ['id' => $id, 'samples' => $sample]) ;
@@ -115,6 +116,21 @@ class UserController extends Controller
         }
         else
             return redirect('/order/'.$request->input('id_packages')) ;
+    }
+
+    public function detail($id){
+        $data = Order::where('id_order', $id)->count() ;
+        if($data){
+            $order = DB::table('orders')
+                        ->join('order_details', 'orders.id_order', '=', 'order_details.id_order')
+                        ->join('portfolios', 'order_details.id_portfolio_sample', '=', 'portfolios.id_portfolios')
+                        ->where('orders.id_order', $id)
+                        ->distinct()
+                        ->get() ;
+
+            return view('detail', ['order' => $order]) ;
+        }else
+            abort(404) ;
     }
 
     /**
@@ -196,7 +212,13 @@ class UserController extends Controller
     public function recent($id){
         $data = User::find($id) ;
         if($data){
-            return view('history', ['user' => $data]) ;
+            $orders = DB::table('orders')
+                        ->join('order_details', 'orders.id_order', '=', 'order_details.id_order')
+                        ->join('portfolios', 'order_details.id_portfolio_sample', '=', 'portfolios.id_portfolios')
+                        ->where('orders.id_user', $id)
+                        // ->groupBy('orders.id_order')
+                        ->get() ;
+            return view('history', ['user' => $data, 'orders' => $orders]) ;
         }
         else
             abort(404) ;
