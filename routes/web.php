@@ -48,7 +48,13 @@ Route::post('/testimoni', 'UserController@testimoni') ;
 
 Route::get('/order/{id}', 'UserController@order') ;
 
+Route::post('/orderpost', 'UserController@orderpost') ;
+
 Route::get('/setting/{id}', 'UserController@setting') ;
+
+Route::get('/setting/{id}/{response}', 'UserController@settings') ;
+
+Route::post('/update', 'UserController@update') ;
 
 Route::get('/recent/{id}', 'UserController@recent') ;
 

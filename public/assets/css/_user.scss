@@ -1,0 +1,78 @@
+.profile-frame{
+	width : 100% ;
+	overflow : hidden ;
+	border-top-left-radius: 5px ;
+	border-top-right-radius: 5px ;
+	background: $red ;
+	color : $white ;
+	text-align: center ;
+}
+.picture-frame{
+	width : 100% ;
+	overflow: hidden ;
+	background: $red ;
+}
+.profile-picture{
+	width : 100% ;
+	border-radius: 100% ;
+}
+.profile-link{
+	width : 100% ;
+	overflow: hidden ;
+}
+ul.profile-detail{
+	margin : 0 ;
+	padding : 0 ;
+
+	li {
+		padding: 15px 13px ;
+		width : 100% ;
+		display: block ;
+		list-style: none ;
+		border-bottom : solid 1px #eee ;
+		border-left: solid 3px $white ;
+		cursor: pointer ;
+
+		&:last-child{
+			border-bottom : none ;
+		}
+		&:hover{
+			background: #fbfbfb ;
+			border-left: solid 3px $red ;
+			color : $red !important ;
+		}
+		a {
+			text-decoration: none ;
+			color : #666;
+
+			&:hover{
+				color : $red ;
+			}
+		}
+	}
+
+	li.active{
+		background: #fbfbfb ;
+		border-left: solid 3px $red ;
+		color : $red ;
+
+		a {
+			color : $red !important ;
+		}
+	}
+
+}
+
+.profile-bio-frame{
+	width : 100% ;
+	overflow : hidden ;
+	border-top-left-radius: 5px ;
+	border-top-right-radius: 5px ;
+	background: $red ;
+	color : $white ;
+	text-align: center ;
+}
+.profile-content-frame{
+	width: 100% ;
+	overflow: hidden ;
+}

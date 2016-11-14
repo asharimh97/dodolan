@@ -12,6 +12,7 @@
 						@endforeach
 					</tr>
 				</thead>
+				<tr><td colspan="4"><h4>&nbsp;</h4></td></tr>
 				<tr>
 					@foreach ($packages as $pack)
 					<?php 
@@ -28,9 +29,32 @@
 					</td>
 					@endforeach
 				</tr>
+				<tr><td colspan="4"><h4>&nbsp;</h4></td></tr>
 				<tr>
 					@foreach ($packages as $pack)
-					<th><p class="text-center">IDR {{ number_format($pack->min_price,0,",",".").' - '.number_format($pack->max_price,0,",",".") }}</p></th>
+					<th>
+						<p class="text-center">
+							<?php 
+								$min = explode('.', number_format($pack->min_price,0,",",".")) ;
+								$max = explode('.', number_format($pack->max_price,0,",",".")) ;
+
+								echo "IDR " ;
+									echo '<span class="bigger">'.$min[0].'</span>.' ;
+									echo '<span class="small">'.$min[1].'</span>' ;
+								echo ' - ' ;
+
+								if(count($max) == 2){
+									echo '<span class="bigger">'.$max[0].'</span>.' ;
+									echo '<span class="small">'.$max[1].'</span>' ;
+								}else if(count($max) == 3){
+									echo '<span class="bigger">'.$max[0].'.'.$max[1].'</span>' ;
+									echo '<span class="small">'.$max[2].'</span>' ;
+								}
+								
+							?>
+							
+						</p>
+						</th>
 					@endforeach
 				</tr>
 				<tfoot>

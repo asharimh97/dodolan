@@ -66,6 +66,12 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $prof = rand()%3+1 ;
+        if($data['gender'] == 'Perempuan'){
+            $pr_path = 'img/profile/female/'.$prof.'.png' ;
+        }else{
+            $pr_path = 'img/profile/male/'.$prof.'.png' ;
+        }
         return User::create([
             'name' => $data['name'],
             'username' => $data['username'],
@@ -74,7 +80,7 @@ class RegisterController extends Controller
             'gender' => $data['gender'],
             'alamat' => $data['address'],
             'telp' => $data['telp'],
-            'prof_pic' => '',
+            'prof_pic' => $pr_path,
         ]);
     }
 }

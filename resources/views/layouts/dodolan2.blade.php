@@ -63,6 +63,7 @@
 							</a>
 
 							<ul class="dropdown-menu" role="menu">
+								<li><a href="{{ url('/home/') }}">Dashboard</a></li>
 								<li><a href="{{ url('/profile/'.Auth::user()->id) }}">Profile</a></li>
 								<li><a href="{{ url('/setting/'.Auth::user()->id) }}">Setting</a></li>
 								<li>

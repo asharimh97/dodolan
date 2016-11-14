@@ -20,6 +20,7 @@ class CreateOrdersTable extends Migration
             $table->dateTime('order_at') ;
             $table->dateTime('revised_at') ;
             $table->string('id_packages') ;
+            $table->string('title') ;
             $table->text('brief') ;
             $table->string('status') ;
         }) ;
