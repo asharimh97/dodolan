@@ -20,13 +20,16 @@ class CreateOrdersTable extends Migration
             $table->dateTime('order_at') ;
             $table->dateTime('revised_at') ;
             $table->string('id_packages') ;
+            $table->integer('id_jenis')->unsigned() ;
             $table->string('title') ;
             $table->text('brief') ;
+            $table->integer('price') ;
             $table->string('status') ;
         }) ;
 
         Schema::table('orders', function(Blueprint $table){
             $table->foreign('id_user')->references('id')->on('users') ;
+            $table->foreign('id_jenis')->references('id_design')->on('jenis_designs')->onUpdate('cascade')->onDelete('restrict') ;
             $table->foreign('id_packages')->references('id_packages')->on('packages')->onUpdate('cascade')->onDelete('restrict') ;
             $table->foreign('status')->references('id_status')->on('order_status')->onUpdate('cascade')->onDelete('restrict') ;
         }) ;

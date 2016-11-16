@@ -119,17 +119,37 @@ class UserController extends Controller
     }
 
     public function detail($id){
-        $data = Order::where('id_order', $id)->count() ;
-        if($data){
-            $order = DB::table('orders')
-                        ->join('order_details', 'orders.id_order', '=', 'order_details.id_order')
+        $data = Order::where('id_order', $id) ;
+        if($data->count() == 1){
+            $data = $data->join('order_status', 'orders.status', '=', 'order_status.id_status')                         
+                         ->first() ;
+            $order = DB::table('order_details')
                         ->join('portfolios', 'order_details.id_portfolio_sample', '=', 'portfolios.id_portfolios')
-                        ->where('orders.id_order', $id)
-                        ->distinct()
+                        ->where('order_details.id_order', $id)
                         ->get() ;
 
-            return view('detail', ['order' => $order]) ;
+            return view('detail', ['data' => $data, 'detail' => $order]) ;
         }else
+            abort(404) ;
+    }
+
+    /**
+    *
+    * Show invoice of order, different status return different invoice brief
+    * @param $id
+    * @return Response
+    *
+    */
+    public function invoice($id){
+        $data = Order::where('id_order', $id) ;
+        if($data->count() == 1){
+            $data = $data
+                         ->join('users', 'orders.id_user', '=', 'users.id')
+                         ->join('jenis_designs', 'orders.id_jenis', '=', 'jenis_designs.id_design')
+                         ->first() ;
+            return view('invoice', ['data' => $data]) ;
+        }
+        else 
             abort(404) ;
     }
 

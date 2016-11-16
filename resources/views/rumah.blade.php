@@ -382,7 +382,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div id="partner" class="owl-carousel">
-					<div class="partner-item"><img src="{{asset('assets/img/partners-1.png')}}" title="Adidas" alt="Adidas"></div>
+					<!-- <div class="partner-item"><img src="{{asset('assets/img/partners-1.png')}}" title="Adidas" alt="Adidas"></div> -->
 					<div class="partner-item"><img src="{{asset('assets/img/partners-2.png')}}" title="BNI" alt="BNI"></div>
 					<div class="partner-item"><img src="{{asset('assets/img/partners-3.png')}}" title="BRI" alt="BRI"></div>
 					<div class="partner-item"><img src="{{asset('assets/img/partners-4.png')}}" title="JNE" alt="JNE"></div>

@@ -1,6 +1,6 @@
-@extends('layouts.dodolan2')
-@section('title', 'Dashboard')
-@section('content')
+@extends('layouts.admin')
+@section('title', 'Orders')
+@section ('content')
 <?php 
     function convertDate($date){
         $thn = substr($date, 0, 4) ;
@@ -26,35 +26,25 @@
     }
 ?>
 <section id="page-content">
-    <div class="container">
-        <div class="row pd-bt-30">
-            <div class="col-md-12">
-            <!-- Menampilkan seluruh order yang dilakukan -->
-                <table class="table table-striped table-hover">
-                    <thead>
-                        <tr>
-                            <th>No</th>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+							<th>No</th>
                             <th class="col-md-2">Order</th>
                             <th class="col-md-4">Brief order</th>
                             <th class="col-md-2">Order date</th>
                             <th>Status</th>
                             <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php 
-                            $i = 1 ;
-                        ?>
-                        @if($count == 0)
-                        <div class="alert alert-danger">
-                            <!-- <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> -->
-                            <p class="strong">You haven't ordered anything.</p>
-                        </div>
-                        @endif
-
-                        @foreach($user as $user)
-                        <tr>
-                            <td>{{ $i }}</td>
+						</tr>
+					</thead>
+					<tbody>
+						<?php $i=1 ;?>
+						@foreach ($orders as $user)
+						<tr>
+							<td>{{ $i }}</td>
                             <td>{{ $user->title }}</td>
                             <td>{{ $user->brief }}</td>
                             <td>{{ convertDate($user->order_at) }}</td>
@@ -74,19 +64,21 @@
                                 @endif
                             </td>
                             <td>
-                                <a href="{{ url('order/detail/'.$user->id_order) }}" class="btn btn-default"><i class="fa fa-eye"></i></a>
-                                <a href="{{ url('order/print/'.$user->id_order) }}" class="btn btn-default"><i class="fa fa-print"></i></a>
-                                <a href="{{ url('order/invoice/'.$user->id_order) }}" class="btn btn-default"><i class="fa fa-paperclip"></i></a>
+                                <a href="{{ url('order/detail/'.$user->id_order) }}" class="btn btn-default btn-sm"><i class="fa fa-eye"></i></a>
+                                @if($user->status != 'DONE')
+                                <a href="{{ url('order/cancel/'.$user->id_order) }}" class="btn btn-danger btn-sm"><i class="fa fa-times"></i></a>
+                                <a href="{{ url('order/approve/'.$user->id_order) }}" class="btn btn-success btn-sm"><i class="fa fa-check"></i></a>
+                                @endif
+                                <a href="{{ url('order/delete/'.$user->id_order) }}" class="btn btn-warning btn-sm"><i class="fa fa-trash"></i></a>
+                                <a href="{{ url('order/print/'.$user->id_order) }}" class="btn btn-default btn-sm"><i class="fa fa-print"></i></a>
                             </td>
-                        </tr>
-                        <?php 
-                            $i++ ;
-                        ?>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
+						</tr>
+						<?php $i++ ; ?>
+						@endforeach
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 </section>
 @endsection

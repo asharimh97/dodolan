@@ -21,7 +21,11 @@ Route::get('/gallery', 'BaseController@gallery');
 
 Route::get('/contact', 'BaseController@contact');
 
+Route::post('/feedback', 'BaseController@postcontact') ;
+
 Route::get('/order', 'BaseController@order');
+
+Route::get('/faq', 'BaseController@faq');
 
 Route::get('/hello', function(){
 	return view('navs') ;
@@ -60,10 +64,32 @@ Route::post('/update', 'UserController@update') ;
 
 Route::get('/recent/{id}', 'UserController@recent') ;
 
+Route::get('/order/invoice/{id}', 'UserController@invoice') ;
+
 /* Admin Controller */
 Route::get('/admin', function(){
 	return redirect('admin/login') ;
 }) ;
+
+Route::get('/dashboard', 'AdminController@index') ;
+
+Route::get('/admin/orders', 'AdminController@orders') ;
+
+Route::get('/admin/users', 'AdminController@users') ;
+
+Route::get('admin/user/delete/{id}', 'AdminController@deleteUser') ;
+
+Route::get('/admin/portfolios', 'AdminController@portfolios') ;
+
+Route::get('/admin/testimonials', 'AdminController@testimonials') ;
+
+Route::get('/admin/feedbacks', 'AdminController@feedbacks') ;
+
+Route::get('/admin/feedback/view/{id}', 'AdminController@viewFeedback') ;
+
+Route::get('/admin/feedback/delete/{id}', 'AdminController@deleteFeedback') ;
+
+Route::get('/admin/teams', 'AdminController@teams') ;
 
 Route::get('/adminreg', 'AdminController@daftar') ;
 

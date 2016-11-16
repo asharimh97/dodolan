@@ -3,11 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Admin ;
+use App\Order ;
+use App\Portfolio ;
+use App\Testimonial ;
+use App\User ;
+use App\Feedback ;
+
 use Illuminate\Http\Request;
 use Illuminate\Http\Response ;
 use Illuminate\Http\RedirectResponse ;
+use Illuminate\Http\UploadedFile ;
 use Illuminate\Support\Facades\DB ;
 use Illuminate\Support\Facades\Hash ;
+use Illuminate\Support\Facades\Auth ;
+use Illuminate\Support\Facades\Storage ;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller ;
@@ -15,6 +24,105 @@ use App\Http\Controllers\Controller ;
 class AdminController extends Controller
 {
     // TO DO 8/11/2016 : Controller for admin
+    public function __construct(){
+    	$this->middleware('admin') ;
+    }
+
+    /**
+    *
+    * Collection of user CRUD
+    *
+    */
+    public function index(){
+        $data = User::all() ;
+    	return view('admin.home', ['users' => $data]) ;
+    }
+
+    public function deleteUser($id){
+        $data = User::find($id) ;
+        if($data){
+            $user = User::where('id', $id)->delete() ;
+            if($user){
+                return redirect('dashboard') ;
+            }else{
+                abort(503) ;
+            }
+        }else{
+            abort(404) ;
+        }
+    }
+
+    /**
+    *
+    * Collection of order CRUD
+    *
+    */
+    public function orders(){
+        $data = Order::all() ;
+        return view('admin.order', ['orders' => $data]) ;
+    }
+
+    /**
+    *
+    * Collection of portfolio CRUD
+    *
+    */
+    public function portfolios(){
+        $data = Portfolio::where('id_portfolios', '>', 0)
+                           ->join('jenis_designs', 'portfolios.id_jenis_design', '=', 'jenis_designs.id_design')
+                           ->join('users', 'portfolios.id_user', '=', 'users.id')
+                           ->get() ;
+        return view('admin.portfolio', ['portfolios' => $data]) ;
+    }
+
+    /**
+    *
+    * Collection of testimonial CRUD
+    *
+    */
+    public function testimonials(){
+        $data = Testimonial::where('id_testi', '>', 0)
+                            ->join('users', 'testimonials.id_user', '=', 'users.id')
+                            ->get() ;
+        return view('admin.testimonial', ['testimonials' => $data]) ;
+    }
+
+    /**
+    *
+    * Collection of feedbacks CRUD
+    *
+    */
+    public function feedbacks(){
+        $data = Feedback::all() ;
+        return view('admin.feedback', ['feedbacks' => $data]) ;
+    }
+
+    public function deleteFeedback($id){
+        $data = Feedback::find($id) ;
+        if($data){
+            $delete = Feedback::where('id', $id)->delete() ;
+            if($delete)
+                return redirect('admin/feedbacks') ;
+            else
+                abort(503) ;
+        }
+        else
+            abort(404) ; 
+    }
+
+    public function viewFeedback($id){
+        return 'view feedback' ;
+    }
+
+    /**
+    *
+    * Collection of team CRUD
+    *
+    */
+    public function teams(){
+        return view('admin.team') ;
+    }
+    // End of CRUD collection
 
     public function daftar(){
     	$roles = DB::table('admin_roles')->get() ;

@@ -866,6 +866,26 @@ ul.profile-detail {
   width: 100%;
   overflow: hidden; }
 
+.invoice-head-img {
+  width: 100%;
+  max-width: 350px; }
+
+.invoice-bar {
+  background: rgba(241, 196, 15, 0.9);
+  color: #000;
+  font-family: "Montserrat-Bold"; }
+
+.invoice-title {
+  font-size: 3em;
+  padding: 0px 20px; }
+
+ul.bank-list {
+  margin: 0;
+  padding: 0; }
+  ul.bank-list li {
+    list-style: none;
+    display: block; }
+
 /* Gallery content */
 #dodolan-gallery .gallery-content {
   margin: 2px !important; }

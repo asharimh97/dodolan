@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->text('alamat');
             $table->string('telp', 14);
             $table->string('prof_pic') ;
+            $table->enum('role', ['user', 'admin']) ;
             $table->rememberToken();
             $table->timestamps();
         });
