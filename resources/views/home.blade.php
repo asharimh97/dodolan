@@ -36,7 +36,8 @@
                             <th>No</th>
                             <th class="col-md-2">Order</th>
                             <th class="col-md-4">Brief order</th>
-                            <th class="col-md-2">Order date</th>
+                            <th>Order date</th>
+                            <th>Price</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -59,6 +60,15 @@
                             <td>{{ $user->brief }}</td>
                             <td>{{ convertDate($user->order_at) }}</td>
                             <td>
+                                @if($user->status == 'Canceled')
+                                    <span class="label label-danger">Canceled order</span>
+                                @elseif($user->price == '0')
+                                    <span class="label label-danger">Unconfirmed price</span>
+                                @else
+                                    IDR{{ number_format($user->price, 2, ',', '.') }}
+                                @endif
+                            </td>
+                            <td>
                                 @if($user->status == 'Submitted')
                                     <span class="label label-default">{{ $user->status }}</span>
                                 @elseif($user->status == 'Canceled')
@@ -75,8 +85,20 @@
                             </td>
                             <td>
                                 <a href="{{ url('order/detail/'.$user->id_order) }}" class="btn btn-default"><i class="fa fa-eye"></i></a>
-                                <a href="{{ url('order/print/'.$user->id_order) }}" class="btn btn-default"><i class="fa fa-print"></i></a>
-                                <a href="{{ url('order/invoice/'.$user->id_order) }}" class="btn btn-default"><i class="fa fa-paperclip"></i></a>
+                                @if($user->status != 'Canceled')
+                                <a href="{{ url('order/cancel/'.$user->id_order) }}" class="btn btn-default"><i class="fa fa-times"></i></a>
+                                    @if ($user->status == 'Confirmed')
+                                    <a href="{{ url('order/approve/'.$user->id_order) }}" class="btn btn-default"><i class="fa fa-check"></i></a>
+                                    @endif
+                                    @if($user->status == 'Done')
+                                    <a href="{{ url('order/print/'.$user->id_order) }}" class="btn btn-default"><i class="fa fa-print"></i></a>
+                                    @endif
+                                @endif
+
+                                @if($user->status == 'Approved')
+                                <a href="{{ url('order/pay/'.$user->id_order) }}" class="btn btn-default" target="_blank"><i class="fa fa-money"></i></a>
+                                @endif
+                                <a href="{{ url('order/invoice/'.$user->id_order) }}" class="btn btn-default" target="_blank"><i class="fa fa-paperclip"></i></a>
                             </td>
                         </tr>
                         <?php 

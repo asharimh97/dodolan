@@ -9,7 +9,9 @@ use App\Order ;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response ;
 use Illuminate\Http\RedirectResponse ;
+use Illuminate\Http\UploadedFile ;
 use Illuminate\Support\Facades\DB ;
+use Illuminate\Support\Facades\Storage ;
 use Illuminate\Support\Facades\Auth as Auth ;
 use Illuminate\Support\Collection ;
 
@@ -72,12 +74,13 @@ class UserController extends Controller
     */
     public function order($id){
         $pack = DB::table('packages')->where('id_packages', '=', $id)->count() ;
+        $jenis = DB::table('jenis_designs')->get() ;
         $sample = Portfolio::where('id_portfolios', '>', '0')
                             ->inRandomOrder()
                             ->limit(12)
                             ->get() ;
         if($pack == 1)
-            return view('order2', ['id' => $id, 'samples' => $sample]) ;
+            return view('order2', ['id' => $id, 'samples' => $sample, 'jenis' => $jenis]) ;
         else
             abort(404) ;
     }
@@ -93,6 +96,7 @@ class UserController extends Controller
         $this->validate($request, [
                 'title' => 'required|max:255',
                 'brief' => 'required',
+                'jenis' => 'required'
             ]) ;
 
         $date = date('Y-m-d H:i:s') ;
@@ -101,8 +105,10 @@ class UserController extends Controller
                 'order_at' => $date,
                 'revised_at' => $date,
                 'id_packages' => $request->input('id_packages'),
+                'id_jenis' => $request->input('jenis'),
                 'title' => $request->input('title'),
                 'brief' => $request->input('brief'),
+                'price' => 0,
                 'status' => 'SBMT'
             ]) ;
 
@@ -131,6 +137,88 @@ class UserController extends Controller
             return view('detail', ['data' => $data, 'detail' => $order]) ;
         }else
             abort(404) ;
+    }
+
+    public function approveOrder($id){
+        $data = Order::where([
+                ['id_order', '=', $id],
+                ['id_user', '=', Auth::user()->id],
+                ['status', '=', 'CONF']
+                ]) ;
+        if($data->count() == 1){
+            $upd = $data->update(['status' => 'APPR']) ;
+            if($upd)
+                return redirect('home') ;
+            else
+                abort(403) ;
+        }
+        else
+            abort(404) ;
+    }
+
+    public function cancelOrder($id){
+        $data = Order::where([
+                ['id_order', '=', $id],
+                ['id_user', '=', Auth::user()->id],
+                ['status', '<>', 'CNCL']
+                ]) ;
+        if($data->count() == 1){
+            $cncl = $data->update(['status' => 'CNCL']) ;
+            if($cncl)
+                return redirect('home') ;
+            else
+                abort(403) ;
+        }
+        else
+            abort(404) ;
+    }
+
+    public function payOrder($id){
+        $data = Order::where([
+                ['id_order', '=', $id],
+                ['id_user', '=', Auth::user()->id],
+                ['status', '=', 'APPR']
+                ]) ;
+        if($data->count() == 1){
+            // cek apakah sudah pernah payment 
+            $pay = DB::table('payments')->where('id_order', '=', $id)->count() ;
+            $data = $data->first() ;
+            if($pay == 0){
+                // boleh payment
+                return view('payment', ['order' => $data]) ;
+            }else
+                abort(403) ;
+        }
+        else
+            abort(404) ;
+    }
+
+    public function payPost(Request $request){
+        $this->validate($request,[
+            'id_order' => 'required|unique:payments',
+            'pay' => 'required'
+            ]) ;
+
+        $ext = $request->pay->extension() ;
+        if($ext == 'jpeg' || $ext == 'png'){
+            $path = $request->pay->store('payments') ;
+            $ins = DB::table('payments')->insert([
+                'id_order' => $request->id_order,
+                'picture' => $path,
+                'status' => 'On process'
+                ]);
+
+            if($ins){
+                // update status order to PAPR
+                $upd = Order::where('id_order', $request->id_order)->update(['status' => 'PAPR']) ;
+                return redirect('home') ;
+            }else{
+                return redirect('order/pay/'.$order->id_order) ;
+            }
+
+        }else{
+            return redirect('order/pay/'.$request->id_order) ;
+        }
     }
 
     /**

@@ -87,10 +87,13 @@
 							</td>
 							<td>{{ $data->jenis_design }}</td>
 							<td>
-								@if($data->price == '0')
+							<?php $nprice = $data->price/2 ; ?>
+								@if($data->status == 'CNCL')
+									Canceled order
+								@elseif($data->price == '0')
 									Unconfirmed Price, please wait
 								@else
-									IDR {{ number_format($data->price, 2, ',', '.') }}
+									IDR {{ number_format($nprice, 2, ',', '.') }}
 								@endif
 							</td>
 							<td>Half payment to ensure you really order this design</td>
@@ -102,10 +105,12 @@
 							<tr class="bigger">
 								<td colspan="3" class="mont-bold">TOTAL : </td>
 								<td colspan="2">
-									@if($data->price == '0')
+									@if ($data->status == 'CNCL')
+										Canceled order
+									@elseif($data->price == '0')
 										Unconfirmed Price, please wait
 									@else
-										IDR {{ number_format($data->price, 2, ',', '.') }}
+										IDR {{ number_format($nprice, 2, ',', '.') }}
 									@endif
 								</td>
 							</tr>

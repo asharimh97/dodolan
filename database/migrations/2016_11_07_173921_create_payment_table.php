@@ -17,11 +17,11 @@ class CreatePaymentTable extends Migration
         Schema::create('payments', function(Blueprint $table){
             $table->integer('id_order')->unsigned()->unique() ;
             $table->string('picture') ;
-            $table->enum('status', ['Not paid','On process', 'Confirmed']) ;
+            $table->enum('payment_status', ['Not paid','On process', 'Confirmed']) ;
         }) ;
 
         Schema::table('payments', function(Blueprint $table){
-            $table->foreign('id_order')->references('id_order')->on('orders') ;
+            $table->foreign('id_order')->references('id_order')->on('orders')->onUpdate('cascade')->onDelete('cascade') ;
         }) ;
     }
 

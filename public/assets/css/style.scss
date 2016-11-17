@@ -503,6 +503,26 @@ ul.packages-feature{
 	border-radius: 100% ;
 }
 
+ul.social-team-links{
+	margin : 0 ;
+	padding : 0 ;
+	color : inherit ;
+
+	& > li{
+		display : inline-block ;
+		margin : 0 5px ;
+	}
+
+	& > li a{
+		color : inherit ;
+		text-decoration: none ;
+
+		&:hover{
+			color : $purple ;
+		}
+	}
+}
+
 
 /* Partners */
 #partner .partner-item{

@@ -67,8 +67,8 @@
                                 <a href="{{ url('/admin/user/delete/'.$user->id) }}" class="btn btn-warning" title="Delete user"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
-                        @endif
                         <?php $i++ ; ?>
+                        @endif
                         @endforeach
                     </tbody>         
                 </table>

@@ -215,116 +215,33 @@
 		<div class="row pd-bt-20">
 			<div class="col-md-12">
 				<div id="team-member" class="owl-carousel">
+				@foreach($teams as $team)
 					<div class="team-item pd-bt-10">
 						<div class="row pd-bt-20">
 							<div class="col-md-8 col-md-offset-2">
-								<img src="{{asset('assets/img/teams-1.jpg')}}" alt="Avidia Sarasvati" title="Avidia Sarasvati" class="team-img">
+								<img src="{{asset('uploads/'.$team->prof_pic)}}" alt="{{ $team->name }}" title="{{ $team->name }}" class="team-img">
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-12 text-center">
-								<p class="big mont-bold nowrap">Avidia Sarasvati</p>
-								<p class="aller">Wireframe Specialist</p>
+								<p class="big mont-bold nowrap">{{ $team->name }}</p>
+								<p class="aller">{{ $team->role }}</p>
 								<p class="pd-bt-10">
 									<ul class="team-links">
-										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Youtube"><i class="fa fa-youtube-play"></i></a></li>
-										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="fa fa-instagram"></i></a></li>
-										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
+										<li><a href="{{ $team->youtube }}" data-toggle="tooltip" data-placement="top" title="Youtube"><i class="fa fa-youtube-play"></i></a></li>
+										<li><a href="{{ $team->twitter }}" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+										<li><a href="{{ $team->facebook }}" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+										<li><a href="{{ $team->instagram }}" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+										<li><a href="{{ $team->google }}" data-toggle="tooltip" data-placement="top" title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
 									</ul>
 								</p>
 							</div>
 						</div>
 					</div>
-					<div class="team-item pd-bt-10">
-						<div class="row pd-bt-20">
-							<div class="col-md-8 col-md-offset-2">
-								<img src="{{asset('assets/img/teams-2.jpg')}}" alt="Avidia Sarasvati" title="Avidia Sarasvati" class="team-img">
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12 text-center">
-								<p class="big mont-bold nowrap">Kukuh Apriyantoro</p>
-								<p class="aller">Senior Logo Designer</p>
-								<p class="pd-bt-10">
-									<ul class="team-links">
-										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Youtube"><i class="fa fa-youtube-play"></i></a></li>
-										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="fa fa-instagram"></i></a></li>
-										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
-									</ul>
-								</p>
-							</div>
-						</div>
-					</div>
-					<div class="team-item pd-bt-10">
-						<div class="row pd-bt-20">
-							<div class="col-md-8 col-md-offset-2">
-								<img src="{{asset('assets/img/teams-3.jpg')}}" alt="Aulia Oktaviana" title="Aulia Oktaviana" class="team-img">
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12 text-center">
-								<p class="big mont-bold nowrap">Aulia Oktaviana</p>
-								<p class="aller">Senior Web Designer</p>
-								<p class="pd-bt-10">
-									<ul class="team-links">
-										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Youtube"><i class="fa fa-youtube-play"></i></a></li>
-										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="fa fa-instagram"></i></a></li>
-										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
-									</ul>
-								</p>
-							</div>
-						</div>
-					</div>
-					<div class="team-item pd-bt-10">
-						<div class="row pd-bt-20">
-							<div class="col-md-8 col-md-offset-2">
-								<img src="{{asset('assets/img/teams-4.jpg')}}" alt="Luluk Nurjannah" title="Luluk Nurjannah" class="team-img">
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12 text-center">
-								<p class="big mont-bold nowrap">Luluk Nurjannah</p>
-								<p class="aller">Logo Designer</p>
-								<p class="pd-bt-10">
-									<ul class="team-links">
-										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Youtube"><i class="fa fa-youtube-play"></i></a></li>
-										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="fa fa-instagram"></i></a></li>
-										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
-									</ul>
-								</p>
-							</div>
-						</div>
-					</div>
-					<div class="team-item pd-bt-10">
-						<div class="row pd-bt-20">
-							<div class="col-md-8 col-md-offset-2">
-								<img src="{{asset('assets/img/teams-5.jpg')}}" alt="Clara Roft" title="Clara Roft" class="team-img">
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12 text-center">
-								<p class="big mont-bold nowrap">Clara Roft</p>
-								<p class="aller">Branding Specialist</p>
-								<p class="pd-bt-10">
-									<ul class="team-links">
-										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Youtube"><i class="fa fa-youtube-play"></i></a></li>
-										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="fa fa-instagram"></i></a></li>
-										<li><a href="#" data-toggle="tooltip" data-placement="top" title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
-									</ul>
-								</p>
-							</div>
-						</div>
-					</div>
+					@endforeach
+					
+					
+
 				</div>
 			</div>
 		</div>

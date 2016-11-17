@@ -8,11 +8,13 @@
 				<h3>{{ $data->title }}</h3>
 				<p>{{ $data->brief }}</p>
 				<p>Sample : </p>
-				@foreach ($detail as $detail)
-				<div class="col-md-4 mg-bt-10">
-					<img src="{{ asset('uploads/'.$detail->picture) }}" class="head-img">
+				<div class="row">
+					@foreach ($detail as $detail)
+					<div class="col-md-4 mg-bt-10">
+						<img src="{{ asset('uploads/'.$detail->picture) }}" class="head-img">
+					</div>
+					@endforeach
 				</div>
-				@endforeach
 				<p>
 					Status order : 
 					@if($data->status == 'Submitted')
@@ -28,6 +30,21 @@
                     @else
                         <span class="label label-success">{{ $data->status }}</span>
                     @endif
+				</p>
+				<p>
+					Price : 
+					@if($data->status == 'Canceled')
+						<span class="label label-danger">Canceled order</span>
+					@elseif($data->price == '0')
+						<span class="label label-danger">Unconfirmed price</span>
+					@else
+						IDR {{ number_format($data->price, 2, ',', '.') }}
+					@endif
+				</p>
+				<p>
+					@if($data->status == 'Confirmed')
+					<a href="{{ url('order/approve/'.$data->id_order) }}" class="btn btn-success mont">Approve offer</a>
+					@endif
 				</p>
 			</div>
 		</div>

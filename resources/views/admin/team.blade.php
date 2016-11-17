@@ -37,12 +37,37 @@
                         <tr>
                             <th>No</th>
                             <th>Name</th>
-                            <th>Bio</th>
+                            <th class="col-md-3">Bio</th>
                             <th>Role</th>
                             <th>Social media ccount</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
+                    <tbody>
+                        <?php $i = 0 ;?>
+                        @foreach($teams as $team)
+                        <tr>
+                            <td>{{ ++$i }}</td>
+                            <td>{{ $team->name }}</td>
+                            <td>{{ $team->bio }}</td>
+                            <td>{{ $team->role }}</td>
+                            <td>
+                                <ul class="social-team-links">
+                                    <li><a href="{{ $team->youtube }}" data-toggle="tooltip" data-placement="top" title="Youtube" target="_blank"><i class="fa fa-youtube-play"></i></a></li>
+                                    <li><a href="{{ $team->facebook }}" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="{{ $team->twitter }}" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="{{ $team->instagram }}" data-toggle="tooltip" data-placement="top" title="Instagram" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="{{ $team->google }}" data-toggle="tooltip" data-placement="top" title="Google+" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                                </ul>
+                            </td>
+                            <td>
+                                <a href="{{ url('admin/team/view/'.$team->id_team) }}" class="btn btn-default btn-sm"><i class="fa fa-eye"></i></a>
+                                <a href="{{ url('admin/team/edit/'.$team->id_team) }}" class="btn btn-info btn-sm"><i class="fa fa-pencil"></i></a>
+                                <a href="{{ url('admin/team/delete/'.$team->id_team) }}" class="btn btn-warning btn-sm"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
                 </table>
 			</div>
 		</div>

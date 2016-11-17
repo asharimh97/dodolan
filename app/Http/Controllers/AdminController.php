@@ -8,6 +8,7 @@ use App\Portfolio ;
 use App\Testimonial ;
 use App\User ;
 use App\Feedback ;
+use App\Team ;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response ;
@@ -62,6 +63,75 @@ class AdminController extends Controller
         return view('admin.order', ['orders' => $data]) ;
     }
 
+    public function rejectOrder($id){
+        $data = Order::where([
+                ['id_order', $id],
+                ['status', 'SBMT']
+                ]) ;
+        if($data->count() == 1){
+            $rjc = $data->update(['status' => 'RJCT']) ;
+            if($rjc){
+                return redirect('admin/orders') ;
+            }else
+                abort(503) ;
+        }else{
+            abort(404) ;
+        }
+    }
+
+    public function approveOrder($id){
+        $data = Order::where([
+                ['id_order', $id],
+                ['status', 'SBMT']
+                ]) ;
+        if($data->count() == 1){
+            $conf = $data->update(['status' => 'CONF', 'price' => '850000']) ;
+            if($conf){
+                return redirect('admin/orders') ;
+            }else
+                abort(503) ;
+        }else{
+            abort(404) ;
+        }
+    }
+
+    public function deleteOrder($id){
+        $data = Order::where('id_order', $id) ;
+        if($data->count() == 1){
+            $del = $data->delete() ;
+            if($del){
+                return redirect('admin/orders') ;
+            }else{
+                abort(503) ;
+            }
+        }else{
+            abort(404) ;
+        }
+    }
+
+    /**
+    *
+    * Collection of payment CRUD
+    *
+    */
+    public function payments(){
+        $data = DB::table('payments')
+                    ->where('payments.id_order', '>', 0)
+                    ->join('orders', 'payments.id_order', '=', 'orders.id_order')
+                    ->join('users', 'orders.id_user', '=', 'users.id')
+                    ->get() ;
+
+        return view('admin.payment', ['payments' => $data]) ;
+    }
+
+    public function rejectPayment($id){
+        return 'reject payment' ;
+    }
+
+    public function approvePayment($id){
+        return 'approve payment' ;
+    }
+
     /**
     *
     * Collection of portfolio CRUD
@@ -110,17 +180,42 @@ class AdminController extends Controller
             abort(404) ; 
     }
 
-    public function viewFeedback($id){
-        return 'view feedback' ;
-    }
-
     /**
     *
     * Collection of team CRUD
     *
     */
     public function teams(){
-        return view('admin.team') ;
+        $data = Team::where('id_team', '>', 0)
+                      ->join('team_roles', 'teams.id_role', '=', 'team_roles.id_role')
+                      ->get() ;
+        return view('admin.team', ['teams' => $data]) ;
+    }
+
+    public function viewTeam($id){
+        $data = Team::where('id_team', $id) ;
+        if($data->count() == 1){
+            $data = $data->join('team_roles', 'teams.id_role', '=', 'team_roles.id_role')
+                         ->first() ;
+
+            return view('admin.profile', ['team' => $data]) ;
+        }else
+            abort(404) ;
+    }
+
+    public function editTeam($id){
+        $data = Team::where('id_team', $id) ;
+        if($data->count() == 1){
+            $data = $data->join('team_roles', 'teams.id_role', '=', 'team_roles.id_role')
+                         ->first() ;
+
+            return view('admin.teamsetting', ['team' => $data]) ;
+        }else
+            abort(404) ;
+    }
+
+    public function deleteTeam($id){
+        return 'Delete team' ;
     }
     // End of CRUD collection
 

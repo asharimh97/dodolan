@@ -63,7 +63,7 @@
 							</a>
 
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="{{ url('/home/') }}">Dashboard</a></li>
+								<li><a href="{{ url('/dashboard/') }}">Dashboard</a></li>
 								<li><a href="{{ url('/profile/'.Auth::user()->id) }}">Profile</a></li>
 								<li><a href="{{ url('/setting/'.Auth::user()->id) }}">Setting</a></li>
 								<li>
@@ -108,6 +108,7 @@
 				<ul class="nav navbar-nav navbar-left">
 					<li><a href="{{ url('/dashboard') }}">User</a></li>
 					<li><a href="{{ url('/admin/orders') }}">Order</a></li>
+					<li><a href="{{ url('/admin/payments') }}">Payments</a></li>
 					<li><a href="{{ url('/admin/portfolios') }}">Portfolio</a></li>
 					<li><a href="{{ url('/admin/testimonials') }}">Testimonials</a></li>
 					<li><a href="{{ url('/admin/feedbacks') }}">Feedback</a></li>

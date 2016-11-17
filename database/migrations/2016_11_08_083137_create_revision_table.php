@@ -17,12 +17,14 @@ class CreateRevisionTable extends Migration
         Schema::create('order_revisions', function(Blueprint $table){
             $table->increments('id_revision') ;
             $table->integer('id_order')->unsigned() ;
+            $table->integer('id_proposal')->unsigned() ;
             $table->text('revision') ;
             $table->datetime('revision_date') ;
         }) ;
 
         Schema::table('order_revisions', function(Blueprint $table){
-            $table->foreign('id_order')->references('id_order')->on('orders') ;
+            $table->foreign('id_order')->references('id_order')->on('orders')->onUpdate('cascade')->onDelete('cascade') ;
+            $table->foreign('id_proposal')->references('id')->on('proposals')->onUpdate('cascade')->onDelete('cascade') ;
         }) ;
     }
 

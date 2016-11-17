@@ -24,7 +24,7 @@
 					<div class="form-group{{ $errors->has('brief') ? ' has-error' : '' }}">
 						<label for="brief" class="control-label col-md-2">Design Brief</label>
 						<div class="col-md-8">
-							<textarea name="brief" id="brief" class="form-control">{{ old('brief') }}</textarea>
+							<textarea name="brief" id="brief" class="form-control" rows="7">{{ old('brief') }}</textarea>
 
 							<span class="help-block">
 								<p class="small">The more detail is better</p>
@@ -32,6 +32,23 @@
 									<p><strong>{{ $errors->first('brief') }}</strong></p>
 							@endif
 							</span>
+						</div>
+					</div>
+					<div class="form-group{{ $errors->has('jenis') ? ' has-error' : '' }}">
+						<label for="jenis" class="control-label col-md-2">Type</label>
+						<div class="col-md-4">
+							<select name="jenis" id="jenis" class="form-control">
+								<option></option>
+								@foreach ($jenis as $jenis)
+								<option value="{{ $jenis->id_design }}">{{ $jenis->jenis_design }}</option>
+								@endforeach
+							</select>
+
+							@if ($errors->has('jenis'))
+								<span class="help-block">
+									<strong>{{ $errors->first('jenis') }}</strong>
+								</span>
+							@endif
 						</div>
 					</div>
 					<div class="form-group{{ $errors->has('sample') ? ' has-error' : '' }}">

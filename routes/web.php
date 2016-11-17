@@ -38,6 +38,7 @@ Route::post('/fileupload', 'PortfolioController@fileupload') ;
 
 Route::get('/lorem/{data}', 'PortfolioController@lorem') ;
 
+
 /* Auth routes */
 
 Auth::routes();
@@ -56,6 +57,16 @@ Route::get('/order/detail/{id}', 'UserController@detail') ;
 
 Route::post('/orderpost', 'UserController@orderpost') ;
 
+Route::get('/order/invoice/{id}', 'UserController@invoice') ;
+
+Route::get('/order/approve/{id}', 'UserController@approveOrder') ;
+
+Route::get('/order/cancel/{id}', 'UserController@cancelOrder') ;
+
+Route::get('/order/pay/{id}', 'UserController@payOrder') ;
+
+Route::post('/order/payment', 'UserController@payPost') ;
+
 Route::get('/setting/{id}', 'UserController@setting') ;
 
 Route::get('/setting/{id}/{response}', 'UserController@settings') ;
@@ -64,7 +75,6 @@ Route::post('/update', 'UserController@update') ;
 
 Route::get('/recent/{id}', 'UserController@recent') ;
 
-Route::get('/order/invoice/{id}', 'UserController@invoice') ;
 
 /* Admin Controller */
 Route::get('/admin', function(){
@@ -74,6 +84,18 @@ Route::get('/admin', function(){
 Route::get('/dashboard', 'AdminController@index') ;
 
 Route::get('/admin/orders', 'AdminController@orders') ;
+
+Route::get('/admin/order/reject/{id}', 'AdminController@rejectOrder') ;
+
+Route::get('/admin/order/approve/{id}', 'AdminController@approveOrder') ;
+
+Route::get('/admin/order/delete/{id}', 'AdminController@deleteOrder') ;
+
+Route::get('/admin/payments', 'AdminController@payments') ;
+
+Route::get('/admin/payment/reject/{id}', 'AdminController@rejectPayment') ;
+
+Route::get('/admin/payment/approve/{id}', 'AdminController@approvePayment') ;
 
 Route::get('/admin/users', 'AdminController@users') ;
 
@@ -90,6 +112,12 @@ Route::get('/admin/feedback/view/{id}', 'AdminController@viewFeedback') ;
 Route::get('/admin/feedback/delete/{id}', 'AdminController@deleteFeedback') ;
 
 Route::get('/admin/teams', 'AdminController@teams') ;
+
+Route::get('/admin/team/view/{id}', 'AdminController@viewTeam') ;
+
+Route::get('/admin/team/edit/{id}', 'AdminController@editTeam') ;
+
+Route::get('/admin/team/delete/{id}', 'AdminController@deleteTeam') ;
 
 Route::get('/adminreg', 'AdminController@daftar') ;
 

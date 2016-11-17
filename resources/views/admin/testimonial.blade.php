@@ -33,10 +33,9 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th class="col-md-3">Testimonial</th>
+                            <th class="col-md-4">Testimonial</th>
                             <th>User</th>
                             <th>Rating</th>
-                            <th>Action</th>
                         </tr>
                     </thead>          
                     <tbody>
@@ -50,11 +49,6 @@
                                     @for ($j=0; $j<$testi->rating; $j++)
                                     <i class="fa fa-star"></i>
                                     @endfor
-                                </td>
-                                <td>
-                                    <a href="" class="btn btn-default btn-sm"><i class="fa fa-eye"></i></a>
-                                    <a href="" class="btn btn-info btn-sm"><i class="fa fa-pencil"></i></a>
-                                    <a href="" class="btn btn-warning btn-sm"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
                         <?php $i++; ?>

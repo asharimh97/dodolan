@@ -23,7 +23,7 @@ class CreateTestimonialsTable extends Migration
         }) ;
 
         Schema::table('testimonials', function(Blueprint $table){
-            $table->foreign('id_user')->references('id')->on('users') ;
+            $table->foreign('id_user')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade') ;
         }) ;
     }
 

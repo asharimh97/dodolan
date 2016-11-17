@@ -20,8 +20,8 @@ class CreateOrderDetailsTable extends Migration
         }) ;
 
         Schema::table('order_details', function(Blueprint $table){
-            $table->foreign('id_order')->references('id_order')->on('orders') ;
-            $table->foreign('id_portfolio_sample')->references('id_portfolios')->on('portfolios') ;
+            $table->foreign('id_order')->references('id_order')->on('orders')->onUpdate('cascade')->onDelete('cascade') ;
+            $table->foreign('id_portfolio_sample')->references('id_portfolios')->on('portfolios')->onUpdate('cascade')->onDelete('cascade');
         }) ;
     }
 

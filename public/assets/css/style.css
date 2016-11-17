@@ -1001,6 +1001,19 @@ ul.packages-feature {
   width: 100%;
   border-radius: 100%; }
 
+ul.social-team-links {
+  margin: 0;
+  padding: 0;
+  color: inherit; }
+  ul.social-team-links > li {
+    display: inline-block;
+    margin: 0 5px; }
+  ul.social-team-links > li a {
+    color: inherit;
+    text-decoration: none; }
+    ul.social-team-links > li a:hover {
+      color: #9b58b6; }
+
 /* Partners */
 #partner .partner-item {
   margin: 3px; }

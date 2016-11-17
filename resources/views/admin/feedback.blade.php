@@ -50,7 +50,6 @@
                             <td>{{ $feed->name }}<br> {{ '('.$feed->email.')' }}</td>
                             <td>{{ convertDate($feed->created_at) }}</td>
                             <td>
-                                <a href="{{ url('admin/feedback/view/'.$feed->id) }}" class="btn btn-default btn-sm"><i class="fa fa-eye"></i></a>
                                 <a href="{{ url('admin/feedback/delete/'.$feed->id) }}" class="btn btn-warning btn-sm"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>

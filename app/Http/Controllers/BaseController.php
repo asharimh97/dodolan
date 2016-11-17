@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Portfolio as Portfolio ;
 use App\Testimonial ;
 use App\Feedback ;
+use App\Team ;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -30,7 +31,10 @@ class BaseController extends Controller
     						->orderBy('rating', 'desc')
     						->limit(3)
     						->get() ;
-    	return view('rumah', [ 'galleries' => $gallery, 'testimonies' => $testimoni ]) ;
+        $team = Team::where('id_team', '>', 0)
+                    ->join('team_roles', 'teams.id_role', '=', 'team_roles.id_role')
+                    ->get() ;
+    	return view('rumah', [ 'galleries' => $gallery, 'testimonies' => $testimoni, 'teams' => $team]) ;
     }
 
     public function faq(){
