@@ -89,6 +89,8 @@ Route::get('/admin/order/reject/{id}', 'AdminController@rejectOrder') ;
 
 Route::get('/admin/order/approve/{id}', 'AdminController@approveOrder') ;
 
+Route::post('/admin/order/approve/{id}', 'AdminController@approveOrderPost') ;
+
 Route::get('/admin/order/delete/{id}', 'AdminController@deleteOrder') ;
 
 Route::get('/admin/payments', 'AdminController@payments') ;

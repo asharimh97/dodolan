@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response ;
 use Illuminate\Http\RedirectResponse ;
 use Illuminate\Http\UploadedFile ;
+use Illuminate\Http\File ;
 use Illuminate\Support\Facades\DB ;
 use Illuminate\Support\Facades\Hash ;
 use Illuminate\Support\Facades\Auth ;
@@ -85,11 +86,35 @@ class AdminController extends Controller
                 ['status', 'SBMT']
                 ]) ;
         if($data->count() == 1){
-            $conf = $data->update(['status' => 'CONF', 'price' => '850000']) ;
-            if($conf){
-                return redirect('admin/orders') ;
-            }else
-                abort(503) ;
+            $data = $data->join('packages', 'orders.id_packages', '=', 'packages.id_packages')
+                         ->join('jenis_designs', 'orders.id_jenis', '=', 'jenis_designs.id_design')
+                         ->first() ;
+            return view('admin.approve_order', ['order' => $data]) ;
+        }else{
+            abort(404) ;
+        }
+    }
+
+    public function approveOrderPost(Request $request){
+        // give price and change status to confirmed (CONF)
+        $this->validate($request, [
+            'price' => 'required'
+            ]) ;
+
+        $order = Order::where('id_order', $request->id_order) ;
+        if($order->count() == 1){
+            $price = $request->price ;
+            if($price >= $request->min_price && $price <= $request->max_price){
+                // price valid
+                $upd = $order->update(['price' => $price, 'status' => 'CONF']) ;
+                if($upd){
+                    return redirect('admin/orders') ;
+                }else{
+                    abort(503) ;
+                }
+            }else{
+                abort(403) ;
+            }
         }else{
             abort(404) ;
         }
@@ -125,12 +150,41 @@ class AdminController extends Controller
     }
 
     public function rejectPayment($id){
-        return 'reject payment' ;
+        // reject payment if not valid
+        $pay = DB::table('payments')->where([
+                    ['id_order', $id],
+                    ['payment_status', 'On process']
+                    ]) ;
+        if($pay->count() == 1){
+            $path = $pay->first() ;
+            // $delfile = File::delete(public_path().'uploads/'.$path->picture) ;
+            $delfile = unlink(public_path('uploads/'.$path->picture)) ;
+            $pay = $pay->update(['payment_status' => 'Rejected', 'picture' => '']) ;
+            $stat = Order::where('id_order', $id)->update(['status' => 'PYRJ']) ;
+
+            return redirect('admin/orders') ;
+        }else{
+            abort(404) ;
+        }
     }
 
     public function approvePayment($id){
-        return 'approve payment' ;
+        // return page to confirm payment, data given is order, brief, payment proof, and status that time
+        $pay = DB::table('payments')->where([
+                    ['id_order', $id],
+                    ['payment_status', 'On process']
+            ]) ;
+        if($pay->count() == 1){
+            $pay = $pay->update(['payment_status' => 'Confirmed']) ;
+            $order = Order::where('id_order', $id)->update(['status' => 'PAID']) ;
+            if($pay){
+                return redirect('admin/orders') ;
+            }
+        }else{
+            abort(404) ;
+        }
     }
+
 
     /**
     *

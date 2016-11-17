@@ -205,7 +205,7 @@ class UserController extends Controller
             $ins = DB::table('payments')->insert([
                 'id_order' => $request->id_order,
                 'picture' => $path,
-                'status' => 'On process'
+                'payment_status' => 'On process'
                 ]);
 
             if($ins){

@@ -36,6 +36,7 @@
                             <th class="col-md-2">Order</th>
                             <th class="col-md-4">Brief order</th>
                             <th class="col-md-2">Order date</th>
+                            <th>Price</th>
                             <th>Status</th>
                             <th>Action</th>
 						</tr>
@@ -48,6 +49,14 @@
                             <td>{{ $user->title }}</td>
                             <td>{{ $user->brief }}</td>
                             <td>{{ convertDate($user->order_at) }}</td>
+                            <td>
+                                @if($user->price == 0)
+                                    <span class="label label-danger">Price unconfirmed</span>
+                                @else
+                                    {{ number_format($user->price, 2, ',', '.') }}
+                                @endif
+
+                            </td>
                             <td>
                                 @if($user->status == 'Submitted')
                                     <span class="label label-default">{{ $user->status }}</span>

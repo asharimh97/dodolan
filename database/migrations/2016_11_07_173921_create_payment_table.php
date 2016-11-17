@@ -17,7 +17,8 @@ class CreatePaymentTable extends Migration
         Schema::create('payments', function(Blueprint $table){
             $table->integer('id_order')->unsigned()->unique() ;
             $table->string('picture') ;
-            $table->enum('payment_status', ['Not paid','On process', 'Confirmed']) ;
+            $table->enum('payment_status', ['Not paid','On process', 'Confirmed', 'Rejected']) ;
+            $table->dateTime('payment_date') ;
         }) ;
 
         Schema::table('payments', function(Blueprint $table){

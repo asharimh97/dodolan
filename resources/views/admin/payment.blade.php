@@ -50,18 +50,28 @@
 							<td>{{ $pay->name }}</td>
 							<td>{{ convertDate($pay->order_at) }}</td>
 							<td>
+								@if($pay->picture != '')
 								<img src="{{ asset('uploads/'.$pay->picture) }}" class="head-img">
+								@else
+								<span class="label label-danger">Payment rejected</span>
+								@endif
 							</td>
 							<td>
 								@if($pay->payment_status == 'On process')
 									<span class="label label-info">On payment process</span>
 								@elseif($pay->payment_status == 'Confirmed')
 									<span class="label label-success">Confirmed</span>
+								@elseif($pay->payment_status == 'Rejected')
+									<span class="label label-danger">Rejected</span>
 								@endif
 							</td>
 							<td>
+								@if($pay->payment_status == 'On process')
 								<a href="{{ url('admin/payment/reject/'.$pay->id_order) }}" class="btn btn-danger"><i class="fa fa-times"></i></a>
 								<a href="{{ url('admin/payment/approve/'.$pay->id_order) }}" class="btn btn-success"><i class="fa fa-check"></i></a>
+								@else
+								No action can be executed
+								@endif
 							</td>
 						</tr>
 						@endforeach
