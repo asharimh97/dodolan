@@ -9,6 +9,7 @@ use App\Testimonial ;
 use App\User ;
 use App\Feedback ;
 use App\Team ;
+use App\Proposal ;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response ;
@@ -64,6 +65,64 @@ class AdminController extends Controller
         return view('admin.order', ['orders' => $data]) ;
     }
 
+    public function detailOrder($id){
+        $data = Order::where('id_order', $id) ;
+        if($data->count() == 1){
+            $order = $data->join('users', 'orders.id_user', '=', 'users.id')
+                        ->first() ;
+            $samples = DB::table('order_details')
+                            ->where('order_details.id_order', '=', $id)
+                            ->join('portfolios', 'order_details.id_portfolio_sample', '=', 'portfolios.id_portfolios')
+                            ->get() ;
+            $props = Proposal::where('id_order', $id)->get() ;
+            return view('admin.detailorder', ['order' => $order, 'samples' => $samples, 'props' => $props]) ;
+        }
+        else
+            abort(404) ;
+    }
+
+    public function proposalOrder($id){
+        $data = Order::where([
+                    ['id_order', $id],
+                    ['status', 'OWIP']]) ;
+        if($data->count() == 1){
+            $order = $data->first() ;
+            return view('admin.proposalorder', ['order' => $order]) ;
+        }else{
+            abort(404) ;
+        }
+        // return 'form proposal untuk id = '.$id ;
+    }
+
+    public function submitProposalOrder(Request $request){
+        $this->validate($request, [
+                'pic' => 'required',
+                'desc' => 'required'
+            ]) ;
+        $date = date('Y-m-d H:i:s') ;
+        $ext = $request->pic->extension() ;
+        if($ext == 'jpeg' || $ext == 'png'){
+            // file extension accepted, insert proposal, change to proposed
+            $path = $request->pic->store('proposals') ;
+            $ins = Proposal::create([
+                    'picture' => $path,
+                    'description' => $request->desc,
+                    'status' => 'Submitted',
+                    'id_order' => $request->id,
+                    'created_at' => $date
+                ]) ;
+            $order = Order::where('id_order', $request->id)->update(['status' => 'PROP']) ;
+
+            if($ins){
+                return redirect('admin/order/detail/'.$request->id) ;
+            }else{
+                abort(503) ;
+            }
+        }else{
+            abort(406) ;
+        }
+    }
+
     public function rejectOrder($id){
         $data = Order::where([
                 ['id_order', $id],
@@ -81,15 +140,29 @@ class AdminController extends Controller
     }
 
     public function approveOrder($id){
-        $data = Order::where([
-                ['id_order', $id],
-                ['status', 'SBMT']
-                ]) ;
+        // $data = Order::where([
+        //         ['id_order', $id],
+        //         ['status', 'SBMT']
+        //         ]) ;
+        $data = Order::where('id_order', $id) ;
         if($data->count() == 1){
-            $data = $data->join('packages', 'orders.id_packages', '=', 'packages.id_packages')
-                         ->join('jenis_designs', 'orders.id_jenis', '=', 'jenis_designs.id_design')
-                         ->first() ;
-            return view('admin.approve_order', ['order' => $data]) ;
+            $order = $data->first() ;
+            if($order->status == 'SBMT'){
+                // if status submitted, set price
+                $data = $data->join('packages', 'orders.id_packages', '=', 'packages.id_packages')
+                             ->join('jenis_designs', 'orders.id_jenis', '=', 'jenis_designs.id_design')
+                             ->first() ;
+                return view('admin.approve_order', ['order' => $data]) ;
+
+            }else if($order->status == 'PAID' || $order->status == 'RVSD'){
+                // if paid, set to WIP
+                $upd = $data->update(['status' => 'OWIP']) ;
+                if($upd){
+                    return redirect('admin/orders') ;
+                }else{
+                    abort(503) ;
+                }
+            }
         }else{
             abort(404) ;
         }

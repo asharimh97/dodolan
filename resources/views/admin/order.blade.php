@@ -73,10 +73,13 @@
                                 @endif
                             </td>
                             <td>
-                                <a href="{{ url('order/detail/'.$user->id_order) }}" class="btn btn-default btn-sm"><i class="fa fa-eye"></i></a>
-                                @if($user->status == 'SBMT')
+                                <a href="{{ url('admin/order/detail/'.$user->id_order) }}" class="btn btn-default btn-sm"><i class="fa fa-eye"></i></a>
+                                @if($user->status == 'SBMT' || $user->status == 'PAID' || $user->status == 'RVSD')
                                 <a href="{{ url('admin/order/reject/'.$user->id_order) }}" class="btn btn-danger btn-sm"><i class="fa fa-times"></i></a>
                                 <a href="{{ url('admin/order/approve/'.$user->id_order) }}" class="btn btn-success btn-sm"><i class="fa fa-check"></i></a>
+                                @endif
+                                @if($user->status == 'OWIP')
+                                <a href="{{ url('admin/order/proposal/'.$user->id_order) }}" class="btn btn-success btn-sm" target="_blank"><i class="fa fa-upload"></i></a>
                                 @endif
                                 <a href="{{ url('admin/order/delete/'.$user->id_order) }}" class="btn btn-warning btn-sm"><i class="fa fa-trash"></i></a>
                             </td>

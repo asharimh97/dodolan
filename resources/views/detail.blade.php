@@ -15,6 +15,43 @@
 					</div>
 					@endforeach
 				</div>
+				@if($data->status == 'Work In Progress')
+					<div class="row pd-bt-10">
+						<p class="litbig">Order result : </p>
+						@foreach ($props as $prop)
+						<div class="col-md-3">
+							<img src="{{ asset('uploads/'.$prop->picture) }}" class="head-img">
+						</div>
+						@endforeach
+					</div>
+				@elseif($data->status == 'Proposed')
+					<div class="row pd-bt-10">
+						<p class="litbig">Order result : </p>
+						@foreach ($props as $prop)
+						<div class="col-md-3">
+							<img src="{{ asset('uploads/'.$prop->picture) }}" class="head-img">
+						</div>
+						@endforeach
+					</div>
+				@elseif($data->status == 'Ask For Revision')
+					<div class="row pd-bt-10">
+						<p class="litbig">Order result : </p>
+						@foreach ($props as $prop)
+						<div class="col-md-3">
+							<img src="{{ asset('uploads/'.$prop->picture) }}" class="head-img">
+						</div>
+						@endforeach
+					</div>
+				@elseif($data->status == 'Done')
+					<div class="row pd-bt-10">
+						<p class="litbig">Order result : </p>
+						@foreach ($props as $prop)
+						<div class="col-md-3">
+							<img src="{{ asset('uploads/'.$prop->picture) }}" class="head-img">
+						</div>
+						@endforeach
+					</div>
+				@endif
 				<p>
 					Status order : 
 					@if($data->status == 'Submitted')
@@ -46,6 +83,12 @@
 					<a href="{{ url('order/approve/'.$data->id_order) }}" class="btn btn-success mont">Approve offer</a>
 					@endif
 				</p>
+				@if($data->status == 'Proposed')
+				<p>
+					<a href="{{ url('order/revise/'.$data->id_order) }}" class="btn btn-danger">Give revision</a>
+					<a href="{{ url('order/approve/'.$data->id_order) }}" class="btn btn-success mont">Approve offer</a>
+				</p>
+				@endif
 			</div>
 		</div>
 	</div>

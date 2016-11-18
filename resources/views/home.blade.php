@@ -35,7 +35,7 @@
                         <tr>
                             <th>No</th>
                             <th class="col-md-2">Order</th>
-                            <th class="col-md-4">Brief order</th>
+                            <th class="col-md-3">Brief order</th>
                             <th>Order date</th>
                             <th>Price</th>
                             <th>Status</th>
@@ -71,7 +71,7 @@
                             <td>
                                 @if($user->status == 'Submitted')
                                     <span class="label label-default">{{ $user->status }}</span>
-                                @elseif($user->status == 'Canceled')
+                                @elseif($user->status == 'Canceled' || $user->status == 'Payment Rejected')
                                     <span class="label label-danger">{{ $user->status }}</span>
                                 @elseif($user->status == 'On Working Process' || $user->status == 'Work In Progress')
                                     <span class="label label-warning">{{ $user->status }}</span>
@@ -95,7 +95,12 @@
                                     @endif
                                 @endif
 
-                                @if($user->status == 'Approved')
+                                @if($user->status == 'Proposed')
+                                <a href="{{ url('order/revise/'.$user->id_order) }}" class="btn btn-default" target="_blank"><i class="fa fa-pencil"></i></a>
+                                <a href="{{ url('order/approve/'.$user->id_order) }}" class="btn btn-default" target="_blank"><i class="fa fa-check"></i></a>
+                                @endif
+
+                                @if($user->status == 'Approved' || $user->status == 'Payment Rejected')
                                 <a href="{{ url('order/pay/'.$user->id_order) }}" class="btn btn-default" target="_blank"><i class="fa fa-money"></i></a>
                                 @endif
                                 <a href="{{ url('order/invoice/'.$user->id_order) }}" class="btn btn-default" target="_blank"><i class="fa fa-paperclip"></i></a>

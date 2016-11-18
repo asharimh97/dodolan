@@ -85,6 +85,12 @@ Route::get('/dashboard', 'AdminController@index') ;
 
 Route::get('/admin/orders', 'AdminController@orders') ;
 
+Route::get('/admin/order/detail/{id}', 'AdminController@detailOrder') ;
+
+Route::get('/admin/order/proposal/{id}', 'AdminController@proposalOrder') ;
+
+Route::post('/admin/order/proposal/{id}', 'AdminController@submitProposalOrder') ;
+
 Route::get('/admin/order/reject/{id}', 'AdminController@rejectOrder') ;
 
 Route::get('/admin/order/approve/{id}', 'AdminController@approveOrder') ;

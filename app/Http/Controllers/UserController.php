@@ -6,6 +6,8 @@ use App\User ;
 use App\Testimonial ;
 use App\Portfolio ;
 use App\Order ;
+use App\Proposal ;
+
 use Illuminate\Http\Request;
 use Illuminate\Http\Response ;
 use Illuminate\Http\RedirectResponse ;
@@ -134,7 +136,9 @@ class UserController extends Controller
                         ->where('order_details.id_order', $id)
                         ->get() ;
 
-            return view('detail', ['data' => $data, 'detail' => $order]) ;
+            $props = Proposal::where('id_order', $id)->get() ;
+
+            return view('detail', ['data' => $data, 'detail' => $order, 'props' => $props]) ;
         }else
             abort(404) ;
     }
@@ -178,10 +182,17 @@ class UserController extends Controller
                 ['id_order', '=', $id],
                 ['id_user', '=', Auth::user()->id],
                 ['status', '=', 'APPR']
-                ]) ;
+                ])
+                ->orWhere([
+                ['id_order', '=', $id],
+                ['id_user', '=', Auth::user()->id],
+                ['status', '=', 'PYRJ']]) ;
         if($data->count() == 1){
             // cek apakah sudah pernah payment 
-            $pay = DB::table('payments')->where('id_order', '=', $id)->count() ;
+            $pay = DB::table('payments')->where([
+                        ['id_order', '=', $id],
+                        ['payment_status', '=', 'On process']
+                        ])->count() ;
             $data = $data->first() ;
             if($pay == 0){
                 // boleh payment
@@ -195,7 +206,7 @@ class UserController extends Controller
 
     public function payPost(Request $request){
         $this->validate($request,[
-            'id_order' => 'required|unique:payments',
+            'id_order' => 'required',
             'pay' => 'required'
             ]) ;
 
