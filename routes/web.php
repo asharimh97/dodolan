@@ -65,6 +65,10 @@ Route::get('/order/cancel/{id}', 'UserController@cancelOrder') ;
 
 Route::get('/order/pay/{id}', 'UserController@payOrder') ;
 
+Route::get('order/revise/{id}', 'UserController@revsOrder') ;
+
+Route::post('order/revs/{id}', 'UserController@postRevsOrder') ;
+
 Route::post('/order/payment', 'UserController@payPost') ;
 
 Route::get('/setting/{id}', 'UserController@setting') ;

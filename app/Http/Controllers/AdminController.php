@@ -272,6 +272,12 @@ class AdminController extends Controller
         return view('admin.portfolio', ['portfolios' => $data]) ;
     }
 
+    public function newPortfolios(){
+        $data = Order::where('status', 'DONE')->get() ;
+
+        return $data ;
+    }
+
     /**
     *
     * Collection of testimonial CRUD

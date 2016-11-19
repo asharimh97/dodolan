@@ -147,14 +147,38 @@ class UserController extends Controller
         $data = Order::where([
                 ['id_order', '=', $id],
                 ['id_user', '=', Auth::user()->id],
-                ['status', '=', 'CONF']
+                // ['status', '=', 'CONF']
                 ]) ;
         if($data->count() == 1){
-            $upd = $data->update(['status' => 'APPR']) ;
-            if($upd)
-                return redirect('home') ;
-            else
-                abort(403) ;
+            $ord = $data->first() ;
+            if($ord->status == 'CONF'){
+
+                $upd = $data->update(['status' => 'APPR']) ;
+                if($upd)
+                    return redirect('home') ;
+                else
+                    abort(403) ;
+
+            }else if($ord->status == 'PROP'){
+                // if status was prop, set to done, get last proposal item, store to portfolios
+                $upd = $data->update(['status' => 'DONE']) ;
+                $prop = Proposal::where('id_order', $id) ;
+                $prop_last = $prop->orderBy('id', 'desc')->first() ;
+                $props = Proposal::where('id', $prop_last->id)->update(['status' => 'Approved']) ;
+                $portfolio = Portfolio::create([
+                            'title' => $ord->title,
+                            'description' => $prop_last->description,
+                            'id_user' => $ord->id_user,
+                            'rating' => '5',
+                            'id_jenis_design' => $ord->id_jenis,
+                            'picture' => $prop_last->picture
+                    ]) ;
+
+                if($portfolio)
+                    return 'berhasil melakukan operasi' ;
+                else
+                    return 'terdapat kegagalan' ;
+            }
         }
         else
             abort(404) ;
@@ -175,6 +199,50 @@ class UserController extends Controller
         }
         else
             abort(404) ;
+    }
+
+    public function revsOrder($id){
+        $data = Order::where([
+                    ['id_order', $id],
+                    ['orders.status', 'PROP']
+                    ]) ;
+        if($data->count() == 1){
+            $data = $data->join('order_status', 'orders.status', '=', 'order_status.id_status')                         
+                         ->first() ;
+            $order = DB::table('order_details')
+                        ->join('portfolios', 'order_details.id_portfolio_sample', '=', 'portfolios.id_portfolios')
+                        ->where('order_details.id_order', $id)
+                        ->get() ;
+
+            $props = Proposal::where('id_order', $id)->orderBy('id', 'desc')->first() ;
+
+            return view('revision', ['data' => $data, 'detail' => $order, 'props' => $props]) ;
+        }else
+            abort(404) ;
+    }
+
+    public function postRevsOrder(Request $request){
+        $this->validate($request,[
+                'revs' => 'required'
+            ]) ;
+        $date = date('Y-m-d H:i:s') ;
+        $prop = Proposal::find($request->id_prop) ;
+        if($prop){
+
+            $ins = DB::table('order_revisions')->insert([
+                        'id_order' => $request->id_order, 'id_proposal' => $request->id_prop, 'revision' => $request->revs, 'revision_date' => $date
+                ]) ;
+            if($ins){
+                $props = Proposal::where('id', $prop->id)->update(['status' => 'Revised']) ;
+                $order = Order::where('id_order', $prop->id_order)->update(['status' => 'RVSD']) ;
+
+                return redirect('home') ;
+            }
+
+        }else{
+            abort(404) ;
+        }
+
     }
 
     public function payOrder($id){
