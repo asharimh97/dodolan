@@ -62,9 +62,16 @@
 				</div>
 				<p>
 					<a href="{{ url('order/invoice/'.$order->id_order) }}" class="btn btn-default" target="_blank"><i class="fa fa-paperclip"></i></a> View invoice 
-					@if($order->status != 'DONE' && $order->status != 'PROP')
+					@if($order->status == 'CONF' || $order->status == 'APPR' || $order->status == 'RVSD' || $order->status == 'APRT')
+					<a href="{{ url('admin/order/approve/'.$order->id_order) }}" class="btn btn-success"><i class="fa fa-check"></i></a> Approve request
+					@endif
+					@if($order->status == 'PRNT')
+					<a href="{{ url('admin/order/approve/'.$order->id_order) }}" class="btn btn-success" target="_blank"><i class="fa fa-check"></i></a> Confirm and Deliver Print
+					@endif
+					@if($order->status == 'OWIP')
 					<a href="{{ url('admin/order/proposal/'.$order->id_order) }}" class="btn btn-success" target="_blank"><i class="fa fa-upload"></i></a> Submit design proposal
 					@endif
+
 				</p>
 			</div>
 		</div>

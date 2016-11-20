@@ -65,6 +65,8 @@
 							<p class="litbig">
 								@if($testi->testimoni_desc == "")
 									No testimonial found
+									<br>
+									<a href="{{ url('testi') }}" class="btn btn-default mont-bold"> Give us one! </a>
 								@else
 								"{{ $testi->testimoni_desc }}"
 								@endif

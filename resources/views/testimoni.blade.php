@@ -1,5 +1,5 @@
 @extends ('layouts.dodolan2')
-
+@section ('title', 'Testimonial')
 @section ('content')
 <section id="page-content">
 	<div class="container">
@@ -13,7 +13,7 @@
 					<div class="form-group{{ $errors->has('desc') ? ' has-error' : '' }}">
 						<label class="control-label col-md-4" for="desc">Testimonial</label>
 						<div class="col-md-6">
-							<textarea name="desc" id="desc" class="form-control"  autofocus>{{ old('desc') }}</textarea>
+							<textarea name="desc" id="desc" class="form-control" rows="3" autofocus>{{ old('desc') }}</textarea>
 
 							@if($errors->has('desc'))
 								<span class="help-block">

@@ -71,6 +71,10 @@ Route::post('order/revs/{id}', 'UserController@postRevsOrder') ;
 
 Route::post('/order/payment', 'UserController@payPost') ;
 
+Route::get('/order/print/{id}', 'UserController@requestPrint') ;
+
+Route::post('/order/print/', 'UserController@postPrint') ;
+
 Route::get('/setting/{id}', 'UserController@setting') ;
 
 Route::get('/setting/{id}/{response}', 'UserController@settings') ;
@@ -100,6 +104,10 @@ Route::get('/admin/order/reject/{id}', 'AdminController@rejectOrder') ;
 Route::get('/admin/order/approve/{id}', 'AdminController@approveOrder') ;
 
 Route::post('/admin/order/approve/{id}', 'AdminController@approveOrderPost') ;
+
+Route::get('/admin/order/deliv/{id}', 'AdminController@deliverOrder') ;
+
+Route::post('/admin/order/deliver', 'AdminController@postDeliverOrder') ;
 
 Route::get('/admin/order/delete/{id}', 'AdminController@deleteOrder') ;
 

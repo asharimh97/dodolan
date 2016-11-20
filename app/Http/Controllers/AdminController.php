@@ -61,7 +61,7 @@ class AdminController extends Controller
     *
     */
     public function orders(){
-        $data = Order::all() ;
+        $data = Order::where('id_order', '>', 0)->orderBy('id_order', 'desc')->get() ;
         return view('admin.order', ['orders' => $data]) ;
     }
 
@@ -162,6 +162,57 @@ class AdminController extends Controller
                 }else{
                     abort(503) ;
                 }
+            }else if($order->status == 'APRT'){
+                $print = DB::table('order_prints')->where('id_order', $id)->update(['status' => 'Print Process']) ;
+                $upd = $data->update(['status' => 'PRNT']) ;
+
+                if($upd && $print)
+                    return redirect('admin/orders') ;
+                else
+                    abort(503) ;
+            }else if($order->status == 'PRNT'){
+                $print = DB::table('order_prints')->where('id_order', $id)->update(['status' => 'Printed']) ;
+                return redirect('admin/order/deliv/'.$id) ;
+            }
+        }else{
+            abort(404) ;
+        }
+    }
+
+    public function deliverOrder($id){
+        $order = Order::where('id_order', $id) ;
+
+        if($order->count() == 1){
+            $order = $order->join('users', 'orders.id_user', '=', 'users.id')
+                        ->first() ;
+            $samples = DB::table('order_details')
+                            ->where('order_details.id_order', '=', $id)
+                            ->join('portfolios', 'order_details.id_portfolio_sample', '=', 'portfolios.id_portfolios')
+                            ->get() ;
+            $props = Proposal::where('id_order', $id)->get() ;
+            return view('admin.shipment', ['order' => $order, 'samples' => $samples, 'props' => $props]) ;
+        }else{
+            abort(404) ;
+        }
+    }
+
+    public function postDeliverOrder(Request $request){
+        $this->validate($request,[
+            'resi' => 'required|max:50'
+            ]) ;
+
+        $order = Order::where([
+                ['id_order', $request->id_order],
+                ['status', 'PRNT']
+                ]) ;
+        if($order->count() == 1){
+            // 
+            $upd = $order->update(['status' => 'DLVR']) ;
+            $print = DB::table('order_prints')->where('id_order', $request->id_order)->update(['resi' => $request->resi,'status' => 'Delivered']) ;
+            if ($upd && $print) {
+                return redirect('admin/orders') ;
+            }else{
+                abort(503) ;
             }
         }else{
             abort(404) ;

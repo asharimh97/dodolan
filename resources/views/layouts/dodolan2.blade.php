@@ -63,7 +63,7 @@
 							</a>
 
 							<ul class="dropdown-menu" role="menu">
-								@if(Auth::user()->user)
+								@if(Auth::user()->role == 'user')
 								<li><a href="{{ url('/home/') }}">Dashboard</a></li>
 								@else
 								<li><a href="{{ url('/dashboard/') }}">Dashboard</a></li>

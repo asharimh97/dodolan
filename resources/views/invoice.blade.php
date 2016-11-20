@@ -92,12 +92,31 @@
 									Canceled order
 								@elseif($data->price == '0')
 									Unconfirmed Price, please wait
+								@elseif($data->status == 'DONE' || $data->status == 'APRT' || $data->status == 'PRNT' || $data->status == 'DLVR')
+									IDR {{ number_format($data->price, 2, ',', '.') }}
 								@else
 									IDR {{ number_format($nprice, 2, ',', '.') }}
 								@endif
 							</td>
-							<td>Half payment to ensure you really order this design</td>
+							<td>
+								@if($data->status == 'CONF' || $data->status == 'APPR' || $data->status == 'OWIP')
+									Half payment to ensure you really order this design
+								@elseif($data->status == 'DONE')
+									Another half payment to fulfill the responsibility to pay, then will send the result through email
+								@else
+									Project payment
+								@endif
+							</td>
 						</tr>
+						@if($data->status == 'APRT' || $data->status == 'PRNT' || $data->status == 'DLVR')
+						<tr>
+							<td>2</td>
+							<td>Print Order</td>
+							<td>Printing</td>
+							<td>Free</td>
+							<td>No additional payment for shipping and printing order</td>
+						</tr>
+						@endif
 						<tr>
 							<td colspan="5"><div class="pd-bt-30">&nbsp;</div></td>
 						</tr>
@@ -109,6 +128,8 @@
 										Canceled order
 									@elseif($data->price == '0')
 										Unconfirmed Price, please wait
+									@elseif($data->status == 'DONE' || $data->status == 'APRT' || $data->status == 'PRNT' || $data->status == 'DLVR')
+										IDR {{ number_format($data->price, 2, ',', '.') }}
 									@else
 										IDR {{ number_format($nprice, 2, ',', '.') }}
 									@endif

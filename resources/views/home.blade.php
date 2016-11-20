@@ -86,7 +86,9 @@
                             <td>
                                 <a href="{{ url('order/detail/'.$user->id_order) }}" class="btn btn-default"><i class="fa fa-eye"></i></a>
                                 @if($user->status != 'Canceled')
+                                @if ($user->status != 'Done' && $user->status != 'Ask For Print' && $user->status != 'Printing Process' && $user->status != 'Delivered')
                                 <a href="{{ url('order/cancel/'.$user->id_order) }}" class="btn btn-default"><i class="fa fa-times"></i></a>
+                                @endif
                                     @if ($user->status == 'Confirmed')
                                     <a href="{{ url('order/approve/'.$user->id_order) }}" class="btn btn-default"><i class="fa fa-check"></i></a>
                                     @endif

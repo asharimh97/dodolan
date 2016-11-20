@@ -1,9 +1,9 @@
 @extends('layouts.dodolan2')
-@section('title', 'Detail Order')
+@section ('title', 'Print Project')
 @section ('content')
 <section id="page-content">
 	<div class="container">
-		<div class="row pd-bt-30">
+		<div class="row">
 			<div class="col-md-12">
 				<h3>{{ $data->title }}</h3>
 				<p>{{ $data->brief }}</p>
@@ -18,47 +18,30 @@
 				@if($data->status == 'Work In Progress')
 					<div class="row pd-bt-10">
 						<p class="litbig">Order result : </p>
-						@foreach ($props as $prop)
 						<div class="col-md-3">
 							<img src="{{ asset('uploads/'.$prop->picture) }}" class="head-img">
 						</div>
-						@endforeach
 					</div>
 				@elseif($data->status == 'Proposed')
 					<div class="row pd-bt-10">
 						<p class="litbig">Order result : </p>
-						@foreach ($props as $prop)
 						<div class="col-md-3">
 							<img src="{{ asset('uploads/'.$prop->picture) }}" class="head-img">
 						</div>
-						@endforeach
 					</div>
 				@elseif($data->status == 'Ask For Revision')
 					<div class="row pd-bt-10">
 						<p class="litbig">Order result : </p>
-						@foreach ($props as $prop)
 						<div class="col-md-3">
 							<img src="{{ asset('uploads/'.$prop->picture) }}" class="head-img">
 						</div>
-						@endforeach
 					</div>
-				@elseif($data->status == 'Done' || $data->status == 'Ask For Print' || $data->status == 'Printing Process')
+				@elseif($data->status == 'Done')
 					<div class="row pd-bt-10">
 						<p class="litbig">Order result : </p>
-						@foreach ($props as $prop)
 						<div class="col-md-3">
 							<img src="{{ asset('uploads/'.$prop->picture) }}" class="head-img">
 						</div>
-						@endforeach
-					</div>
-				@elseif($data->status == 'Delivered')
-					<div class="row pd-bt-10">
-						<p class="litbig">Order result : </p>
-						@foreach ($props as $prop)
-						<div class="col-md-3">
-							<img src="{{ asset('uploads/'.$prop->picture) }}" class="head-img">
-						</div>
-						@endforeach
 					</div>
 				@endif
 				<p>
@@ -77,36 +60,31 @@
                         <span class="label label-success">{{ $data->status }}</span>
                     @endif
 				</p>
-				@if($data->status == 'Done')
-				<p>
-					<em>We have sent our result package to your email. You may check it.</em>
-				</p>
-				@elseif($data->status == 'Delivered')
-				<p>
-					<em>We have sent our result package to your email and we have sent the printed file to your address, make sure you give us the right address. You may check it.</em>
-				</p>
-				@endif
-				<p>
-					Price : 
-					@if($data->status == 'Canceled')
-						<span class="label label-danger">Canceled order</span>
-					@elseif($data->price == '0')
-						<span class="label label-danger">Unconfirmed price</span>
-					@else
-						IDR {{ number_format($data->price, 2, ',', '.') }}
-					@endif
-				</p>
-				<p>
-					@if($data->status == 'Confirmed')
-					<a href="{{ url('order/approve/'.$data->id_order) }}" class="btn btn-success mont">Approve offer</a>
-					@endif
-				</p>
-				@if($data->status == 'Proposed')
-				<p>
-					<a href="{{ url('order/revise/'.$data->id_order) }}" class="btn btn-danger">Give revision</a>
-					<a href="{{ url('order/approve/'.$data->id_order) }}" class="btn btn-success mont">Approve offer</a>
-				</p>
-				@endif
+				
+				<div class="row">
+					<div class="col-md-6">
+						<form action="{{ url('order/print/') }}" method="POST" class="form">
+							{{ csrf_field() }}
+							<input type="hidden" name="id_order" value="{{ $data->id_order }}">
+
+							<div class="form-group{{ $errors->has('brief') ? ' has-error' : '' }}">
+								<label class="control-label" for="brief">Print Brief</label>
+								<textarea class="form-control" name="brief" id="brief" rows="5" required autofocus>
+									{{ old('brief') }}
+								</textarea>
+
+								@if($errors->has('brief'))
+									<span class="help-block">
+										<strong>{{ $errors->first('brief') }}</strong>
+									</span>
+								@endif
+							</div>
+							<div class="form-group">
+								<input type="submit" name="submit" value="Submit request" class="btn btn-success mont">
+							</div>
+						</form>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

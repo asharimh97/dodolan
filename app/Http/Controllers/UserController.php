@@ -62,10 +62,6 @@ class UserController extends Controller
     	return view('home', ['user' => $data, 'count' => $count]) ;
     }
 
-    public function testi(){
-    	return view('testimoni') ;
-    }
-
     // order page after choose a package, if user choose
     /**
     *
@@ -175,9 +171,9 @@ class UserController extends Controller
                     ]) ;
 
                 if($portfolio)
-                    return 'berhasil melakukan operasi' ;
+                    return redirect('order/detail/'.$id) ;
                 else
-                    return 'terdapat kegagalan' ;
+                    abort(503) ;
             }
         }
         else
@@ -279,12 +275,14 @@ class UserController extends Controller
             ]) ;
 
         $ext = $request->pay->extension() ;
+        $date = date('Y-m-d H:i:s') ;
         if($ext == 'jpeg' || $ext == 'png'){
             $path = $request->pay->store('payments') ;
             $ins = DB::table('payments')->insert([
                 'id_order' => $request->id_order,
                 'picture' => $path,
-                'payment_status' => 'On process'
+                'payment_status' => 'On process',
+                'payment_date' => $date
                 ]);
 
             if($ins){
@@ -297,6 +295,60 @@ class UserController extends Controller
 
         }else{
             return redirect('order/pay/'.$request->id_order) ;
+        }
+    }
+
+    public function requestPrint($id){
+        $data = Order::where([
+                ['id_order', $id],
+                ['orders.status', 'DONE']
+                ]) ;
+        if($data->count() == 1){
+            $data = $data->join('order_status', 'orders.status', '=', 'order_status.id_status')                         
+                         ->first() ;
+            $order = DB::table('order_details')
+                        ->join('portfolios', 'order_details.id_portfolio_sample', '=', 'portfolios.id_portfolios')
+                        ->where('order_details.id_order', $id)
+                        ->get() ;
+
+            $prop = Proposal::where('id_order', $id)->orderBy('id', 'desc')->first() ;
+
+            return view('print', ['data' => $data, 'detail' => $order, 'prop' => $prop]) ;
+        }
+        else
+            abort(404) ;
+    }
+
+    public function postPrint(Request $request){
+        $this->validate($request,[
+                'brief' => 'required'
+            ]) ;
+        $order = Order::where('id_order', $request->id_order) ;
+        if($order->count() == 1){
+            $print = DB::table('order_prints')->where('id_order', $request->id_order) ;
+            if($print->count() == 0){
+
+                $date = date('Y-m-d H:i:s') ;
+                $ins = DB::table('order_prints')->insert([
+                        'id_order' => $request->id_order, 'brief' => $request->brief, 'print_at' => $date, 'resi' => '', 'status' => 'Waiting'
+                    ]) ;
+
+                if($ins){
+                    // change status to request for print, invoice will add detail for print
+                    $upd = $order->update(['status' => 'APRT']) ;
+                    return redirect('home') ;
+                }else{
+                    abort(503) ;
+                }
+
+            }else{
+                abort(403) ;
+            }
+
+        }else{
+
+            abort(404) ;
+
         }
     }
 
@@ -436,6 +488,15 @@ class UserController extends Controller
     	}
     }
 
+    public function testi(){
+        $tes = Testimonial::where('id_user', Auth::user()->id) ;
+        if($tes->count() == 0){
+            return view('testimoni') ;
+        }else{
+            abort(404) ;
+        }
+    }
+
     /**
     *
     * Store testimonials user about the project a user can only do testimonials once
@@ -445,23 +506,28 @@ class UserController extends Controller
     */
 
     public function testimoni(Request $request){
-    	$this->validate($request,[
-    			'id_user' => 'required|unique:testimonials',
-    			'desc' => 'required|max:300',
-    			'rating' => 'required',
-    			'unique_code' => 'required|unique:testimonials',
-    		]) ;
+        
 
-    	$userid = $request->input('id_user') ;
-    	$ins = Testimonial::create([
-    			'id_user' => $userid,
-    			'testimoni_desc' => $request->desc,
-    			'rating' => $request->rating,
-    			'unique_code' => $request->unique_code
-    		]) ;
+        $this->validate($request,[
+                'id_user' => 'required|unique:testimonials',
+                'desc' => 'required|max:300',
+                'rating' => 'required',
+                'unique_code' => 'required|unique:testimonials',
+            ]) ;
 
-    	if($ins) return redirect('testi') ;
-    	else return redirect('lorem/gagal') ;
+        $userid = $request->input('id_user') ;
+        $ins = Testimonial::create([
+                'id_user' => $userid,
+                'testimoni_desc' => $request->desc,
+                'rating' => $request->rating,
+                'unique_code' => $request->unique_code
+            ]) ;
+
+        if($ins)
+            return redirect('profile/'.$userid) ;
+        else
+            abort(503) ;
+        
     }
 
 }
